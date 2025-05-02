@@ -357,6 +357,7 @@
         <a href="#" class="nav-link" data-week="8">Week 8: Pigeon Peas</a>
         <a href="#" class="nav-link" data-week="9">Week 9: Pinto Beans</a>
         <a href="#" class="nav-link" data-week="recipes">MyPlate Recipes</a>
+        <a href="#" class="nav-link" data-week="learnmore">Learn More</a>
     </div>
 </div> 
 
@@ -381,55 +382,63 @@
         margin-right: auto;  /* Centers the element */  
     }  
 
-        /* Hamburger menu styles */
-        .hamburger-menu {
-            display: block;  /* Changed from 'none' to 'block' to always show */
-            cursor: pointer;
-            padding: 10px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: #e7d3c2;
-            border-radius: 5px;
-        }
-        
-        .hamburger-menu span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: #7c5c3e;
-            margin: 5px 0;
-            transition: 0.4s;
-        }
-        
-        .sidebar {
-            position: fixed;
-            left: -250px;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background: #e7d3c2;
-            transition: 0.4s;
-            padding-top: 60px;
-            z-index: 999;
-        }
-        
-        .sidebar.active {
-            left: 0;
-        }
-        
-        .sidebar a {
-            display: block;
-            padding: 15px 25px;
-            color: #7c5c3e;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        
-        .sidebar a:hover {
-            background: #d4b49e;
-        }
+      /* Hamburger menu styles */  
+.hamburger-menu {  
+    display: block;  
+    cursor: pointer;  
+    padding: 15px 20px;  /* Increased padding */  
+    position: fixed;  
+    top: 20px;  
+    left: 20px;  
+    z-index: 1000;  
+    background: #e7d3c2;  
+    border-radius: 5px;  
+    width: 50px;  /* Increased width */  
+    height: 50px;  /* Added fixed height */  
+    text-align: center;  /* Center the content */  
+    display: flex;  /* Added flex display */  
+    flex-direction: column;  /* Stack items vertically */  
+    justify-content: center;  /* Center vertically */  
+    align-items: center;  /* Center horizontally */  
+}  
+  
+.hamburger-menu span {  
+    display: block;  
+    width: 35px;  /* Increased width of lines */  
+    height: 3px;  
+    background-color: #7c5c3e;  
+    margin: 5px auto;  /* Keep consistent spacing */  
+    transition: 0.4s;  
+}  
+  
+/* Rest of the CSS remains the same */  
+.sidebar {  
+    position: fixed;  
+    left: -250px;  
+    top: 0;  
+    width: 250px;  
+    height: 100%;  
+    background: #e7d3c2;  
+    transition: 0.4s;  
+    padding-top: 60px;  
+    z-index: 999;  
+}  
+  
+.sidebar.active {  
+    left: 0;  
+}  
+  
+.sidebar a {  
+    display: block;  
+    padding: 15px 25px;  
+    color: #7c5c3e;  
+    text-decoration: none;  
+    font-size: 18px;  
+}  
+  
+.sidebar a:hover {  
+    background: #d4b49e;  
+}  
         
         /* Removed media query that was hiding the hamburger menu */
         </style>  
@@ -1456,7 +1465,9 @@
 
 <div class="week-content" id="week-7" style="display: none;">
     <div class="container">
-        <h2 class="week-title">Week 7: Black Eyed Peas</h2>
+    <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Week 7: Black Eyed Peas</h2>  
+</div> 
         <div class="image-gallery">
             <div class="image-holder">
                 <img src="https://i.imgur.com/49gSYTv.jpeg"> 
@@ -1566,7 +1577,9 @@
 
 <div class="week-content" id="week-8" style="display: none;">
     <div class="container">
-        <h2 class="week-title">Week 8: Pigeon Peas</h2>
+      <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Week 8: Pigeon Peas</h2>  
+</div>  
         <div class="image-gallery">
             <div class="image-holder">
                 <img src="https://i.imgur.com/gzmXupJ.jpeg"> 
@@ -1674,7 +1687,9 @@
 
 <div class="week-content" id="week-9" style="display: none;">
     <div class="container">
-        <h2 class="week-title">Week 9: Pinto Beans</h2>
+        <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Week 9: Pinto Beans</h2>  
+</div>  
       <div class="image-gallery">
             <div class="image-holder">
                 <img src="https://i.imgur.com/ZNUpMZx.jpeg"> 
@@ -1876,10 +1891,865 @@
         
         /* Removed media query that was hiding the hamburger menu */
         </style>
+        <div class="week-content" id="week-learnmore" style="display: none;">
+    <div class="container">
+        <title>Pulses & Balanced Meals - University of Arizona Nutrition Guide</title>
+    <style>
+        :root {
+            --ua-red: #AB0520;
+            --ua-blue: #0C234B;
+            --ua-white: #FFFFFF;
+            --ua-light-blue: #1E5288;
+            --ua-gray: #F4F4F4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+         body {  
+            min-height: 100vh;  
+            font-family: Arial, sans-serif;  
+            background: url('https://i.imgur.com/9Lqlf2a.png') no-repeat center center fixed;  
+            background-size: cover;  
+        }  
+        
+        header {
+            background: var(--ua-blue);
+            color: var(--ua-white);
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-accent {
+            height: 8px;
+            background: var(--ua-red);
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin: 1.5rem 0;
+            color: var(--ua-blue);
+            border-bottom: 3px solid var(--ua-red);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin: 1.2rem 0;
+            color: var(--ua-light-blue);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .intro {
+            background-color: var(--ua-white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            background-color: var(--ua-white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background-color: var(--ua-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-style: italic;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-top: 0;
+        }
+        
+        .pulse-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .pulse-type {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 5px solid var(--ua-red);
+        }
+        
+        .meal-planner {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .meal-planner th {
+            background-color: var(--ua-blue);
+            color: var(--ua-white);
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .meal-planner td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .meal-planner tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tip {
+            background-color: var(--ua-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--ua-light-blue);
+        }
+        
+        .recipe-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .recipe {
+            background-color: var(--ua-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .recipe-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-style: italic;
+        }
+        
+        .recipe-content {
+            padding: 1.5rem;
+        }
+        
+        .benefits-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .benefit {
+            flex: 1 1 300px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--ua-red);
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-img {
+            height: 200px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-style: italic;
+        }
+        
+        .quote {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--ua-red);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        .quote-author {
+            margin-top: 1rem;
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        footer {
+            background-color: var(--ua-blue);
+            color: var(--ua-white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-accent {
+            height: 8px;
+            background: var(--ua-red);
+            width: 100%;
+        }
+        
+        .accordion {
+            margin: 2rem 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            background-color: var(--ua-light-blue);
+            color: var(--ua-white);
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-content {
+            background-color: var(--ua-white);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content-inner {
+            padding: 1.5rem;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        .cta-container {
+            background-color: var(--ua-light-blue);
+            color: var(--ua-white);
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--ua-red);
+            color: var(--ua-white);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            background-color: #8a0419;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .card-container, .tips-container, .recipe-gallery, .benefits-container {
+                flex-direction: column;
+            }
+        }
+        .image-gallery {  
+    display: flex;  
+    flex-wrap: wrap;  
+    gap: 24px;  
+    justify-content: center;  
+}  
+  
+.gallery-img {  
+    flex: 1 1 300px;  
+    max-width: 320px;  
+    background: #fafafa;  
+    padding: 16px;  
+    border-radius: 10px;  
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);  
+    text-align: center;  
+}  
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Pulses & Balanced Meals</h1>
+           <p style="font-size: 1.3rem;">A comprehensive guide to incorporating nutritious pulses into your daily meals</p> 
+        </div>
+        <div class="header-accent"></div>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <h2>Introduction to Pulses</h2>
+            <p>Pulses include beans, lentils, chickpeas, and dry peas—nutritional powerhouses that have been a staple food in many cultures for thousands of years. Rich in protein, fiber, and essential nutrients, pulses are not only nutritious but also sustainable and affordable food options.</p>
+            
+            <div class="image-gallery">  
+    <img src="https://foodtank.com/wp-content/uploads/2016/01/year_of_pulses.jpg"   
+         style="max-width: 600px; /* adjust this value as needed */  
+                display: block;  
+                margin: 0 auto;">  
+</div>  
+            
+            <div class="quote">
+                <p>“Pulses are a nutritional powerhouse... high in fiber, plant protein, and several important macronutrients.”</p>
+                <p class="quote-author">— Tim McGreevy, CEO, USA Dry Pea and Lentil Counci</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Types of Pulses</h2>
+            <p>There's a wide variety of pulses available, each with their unique flavor profiles, textures, and culinary applications. Here are some common types:</p>
+            
+            <div class="pulse-types">
+                <div class="pulse-type">
+                    <h3>Beans</h3>
+                    <p>Including black beans, kidney beans, navy beans, pinto beans, and more. Beans are versatile and can be used in soups, stews, salads, and as side dishes.</p>
+                </div>
+                <div class="pulse-type">
+                    <h3>Lentils</h3>
+                    <p>Including red, green, brown, and black lentils. They cook quickly and are perfect for soups, stews, salads, and as a meat substitute in many dishes.</p>
+                </div>
+                <div class="pulse-type">
+                    <h3>Chickpeas</h3>
+                    <p>Also known as garbanzo beans, chickpeas are used in hummus, falafels, curries, and salads. They have a nutty flavor and creamy texture.</p>
+                </div>
+                <div class="pulse-type">
+                    <h3>Dry Peas</h3>
+                    <p>Including yellow and green split peas. They're commonly used in soups, stews, and purees, and are especially popular in winter recipes.</p>
+                </div>
+            </div>
+            </div>  
+<hr>  
+<div class="card-container">  
+    <div class="card">  
+        <div class="https://plantura.garden/uk/wp-content/uploads/sites/2/2021/03/bean-varieties-1024x683.jpg?x63657">  
+<div style="text-align: center;">  
+  <h3>Bean Varieties</h3>  
+   <p>Explore the rich diversity of beans from around the world, from the small navy bean to the colorful cranberry bean.</p>  
+</div>  
+            <a href="https://pulses.org/us/what-are-pulses/beans/" target="_blank">  
+                <img src="https://plantura.garden/uk/wp-content/uploads/sites/2/2021/03/bean-varieties-1024x683.jpg?x63657"       
+                     alt="Variety of beans"       
+            style="max-width: 400px; /* adjust this value as needed */  
+                display: block;  
+                margin: 0 auto;">  
+</div>  
+           </a>  
+            </p> 
+        </div>  
+    </div>  
+                  <div class="card-container">  
+                <div class="card">
+                    <div class="https://countrylifefoods.com/cdn/shop/articles/6_types_of_lentils-892747.png?v=1743407090">
+                      <div style="text-align: center;">  
+  <h3>Lentil Varieties</h3>  
+  <p>Discover the rainbow of lentils available and learn how each type can enhance different dishes.</p>  
+</div>  
+            <a href="https://pulses.org/us/what-are-pulses/lentils/" target="_blank">  
+                <img src="https://countrylifefoods.com/cdn/shop/articles/6_types_of_lentils-892747.png?v=1743407090"       
+                     alt="Variety of beans"       
+                    style="max-width: 400px; /* adjust this value as needed */  
+                display: block;  
+                margin: 0 auto;">  
+</div>  
+           </a>  
+            </p> 
+        </div>  
+    </div>   
+                <div class="card">
+                    <div class="https://northernnester.com/wp-content/uploads/2021/01/types-of-lentils.jpg">
+                    </div>
+                    <div class="card-content">
+                        <h3 style="text-align: center;">All About Chickpeas</h3>  
+                        <p style="text-align: center;">  
+  From whole chickpeas to chickpea flour, learn about the versatility of this popular pulse.  
+</p> 
+                                </p>
+                                </p>
+                       <a href="https://pulses.org/us/what-are-pulses/chickpeas/" target="_blank" style="display: block; text-align: center;">  
+    <img src="https://www.farmweekly.com.au/images/transform/v1/crop/frm/79651642/62e59953-2289-44f4-88da-d8eda869aee9.jpg/r0_0_1280_853_w1280_h853_fmax.jpg"  
+         alt="Variety of beans"  
+         style="max-width: 450px; width: 100%; height: auto; border-radius: 7px; margin-bottom: 10px; display: inline-block;">  
+</a>  
+                </div>
+            </div>
+        </section>
+        </div>
+        
+        <section class="section">
+            <h2>Nutritional Benefits of Pulses</h2>
+            <p>Pulses are nutritional powerhouses that offer numerous health benefits. Including them regularly in your diet can contribute significantly to your overall health and wellbeing.</p>
+            
+            <div class="benefits-container">
+                <div class="benefit">
+                    <h3>Protein-Rich</h3>
+                    <p>Pulses are an excellent source of plant-based protein, containing about 20-25% protein by weight. They're particularly valuable for vegetarians and vegans as a meat alternative.</p>
+                </div>
+                <div class="benefit">
+                    <h3>High in Fiber</h3>
+                    <p>With both soluble and insoluble fiber, pulses help maintain digestive health, regulate blood sugar levels, and promote a feeling of fullness that can aid in weight management.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Low Glycemic Index</h3>
+                    <p>Pulses have a low glycemic index, meaning they cause a slower, more gradual rise in blood sugar levels, making them suitable for people with diabetes or insulin resistance.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Rich in Micronutrients</h3>
+                    <p>Pulses provide essential vitamins and minerals including folate, iron, potassium, magnesium, and zinc, contributing to overall nutritional adequacy.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Heart-Healthy</h3>
+                    <p>Regular consumption of pulses has been associated with reduced risk of heart disease, partly due to their cholesterol-lowering effects and blood pressure regulation.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Sustainable Choice</h3>
+                    <p>Pulses require less water to grow than many other protein sources and can fix nitrogen in the soil, reducing the need for synthetic fertilizers.</p>
+                </div>
+            </div>
+            
+          <div class="card-container">  
+    <div class="card">  
+        <div class="https://images.healthshots.com/healthshots/en/uploads/2024/02/08123645/animal-vs-plant-protein.jpg">  
+            <a href="https://pulses.org/us/sustainability/" target="_blank">  
+                <img src="https://images.healthshots.com/healthshots/en/uploads/2024/02/08123645/animal-vs-plant-protein.jpg"       
+                     alt="Variety of beans"       
+                     style="max-width: 100%; height: 100; border-radius: 10px; margin-bottom: 40px;">  
+            </a>  
+        </div>  
+    </div>  
+</div>  
+        
+        <section class="section">
+            <h2>Incorporating Pulses into Your Diet</h2>
+            <p>Adding pulses to your daily meals doesn't have to be complicated. Here are practical ways to include these nutritional powerhouses in your diet:</p>
+            
+            <div class="tips-container">
+                <div class="tip">
+                    <h3>Start Small</h3>
+                    <p>If you're new to pulses, start by incorporating small amounts into familiar dishes. Add a half cup of lentils to your spaghetti sauce or mix some black beans into your favorite salsa.</p>
+                </div>
+                <div class="tip">
+                    <h3>Use Canned Options</h3>
+                    <p>For convenience, keep canned beans and lentils in your pantry. Just drain and rinse them to reduce sodium content before using.</p>
+                </div>
+                <div class="tip">
+                    <h3>Batch Cook</h3>
+                    <p>Cook a large batch of pulses at the beginning of the week and refrigerate or freeze in portion-sized containers for quick additions to meals throughout the week.</p>
+                </div>
+                <div class="tip">
+                    <h3>Blend Into Smoothies</h3>
+                    <p>White beans and chickpeas can be blended into fruit smoothies for added protein and creaminess without altering the flavor significantly.</p>
+                </div>
+                <div class="tip">
+                    <h3>Make Plant-Based Swaps</h3>
+                    <p>Use pulses as a substitute for meat in traditional recipes. Lentil bolognese, chickpea "tuna" salad, and black bean burgers are all delicious options.</p>
+                </div>
+                <div class="tip">
+                    <h3>Explore Global Cuisines</h3>
+                    <p>Many traditional diets worldwide feature pulses prominently. Try Indian dal, Mexican beans, Middle Eastern hummus, or Italian pasta e fagioli for inspiration.</p>
+                </div>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-content">
+                         <div class="https://images.healthshots.com/healthshots/en/uploads/2024/02/08123645/animal-vs-plant-protein.jpg">  
+                        <h3>Meal Prep Ideas</h3>
+                        <p>Practical ideas for preparing pulse-based meals ahead of time for busy weekdays.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <p></p>
+                    </div>
+                    <div class="card-content">
+                        <h3>Quick Lunch Options</h3>
+                        <p>Simple pulse-based lunches that can be prepared in minutes for work or school.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <p></p>
+                    </div>
+                    <div class="card-content">
+                        <h3>Family-Friendly Dishes</h3>
+                        <p>
+                            <p>
+                        <p>Kid-approved recipes that incorporate pulses in delicious and appealing ways.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Building Balanced Meals with Pulses</h2>
+            <p>Creating nutritionally balanced meals with pulses as a foundation is both simple and delicious. Here's how to structure your plate:</p>
+            
+      <div class="gallery-img" style="height: 300px; margin: 2rem 0;">  
+  <img src="https://myplate-prod.azureedge.us/sites/default/files/styles/medium/public/2020-11/myplate-brand--labelled.png?itok=7VtFXcBC" alt="Balanced meal with pulses" style="display: block; margin: 0 auto; height: 100%;">  
+</div>  
+            <h3>The Balanced Plate Method</h3>
+            <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                <li><strong>¼ of your plate:</strong> Pulses or other protein sources</li>
+                <li><strong>¼ of your plate:</strong> Whole grains or starchy vegetables</li>
+                <li><strong>½ of your plate:</strong> Non-starchy vegetables and fruits</li>
+                <li><strong>Add:</strong> Small amounts of healthy fats (olive oil, avocado, nuts)</li>
+            </ul>
+            
+            <h3>Weekly Meal Planner</h3>
+            <table class="meal-planner">
+                <tr>
+                    <th>Day</th>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                    <th>Snack</th>
+                </tr>
+                <tr>
+                    <td>Monday</td>
+                    <td>Overnight oats with white beans, cinnamon, and berries</td>
+                    <td>Mediterranean chickpea salad with feta and olives</td>
+                    <td>Black bean and vegetable enchiladas</td>
+                    <td>Roasted chickpeas with spices</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>Smoothie with banana, spinach, and white beans</td>
+                    <td>Lentil soup with whole grain bread</td>
+                    <td>Chickpea pasta with roasted vegetables</td>
+                    <td>Hummus with veggie sticks</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Avocado toast with white bean spread</td>
+                    <td>Quinoa bowl with roasted vegetables and lentils</td>
+                    <td>Bean and vegetable stir-fry with brown rice</td>
+                    <td>Bean brownies (made with black beans)</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>Chickpea flour pancakes with fruit</td>
+                    <td>Split pea soup with whole grain crackers</td>
+                    <td>Lentil bolognese with whole wheat pasta</td>
+                    <td>Bean dip with baked tortilla chips</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Breakfast burrito with black beans</td>
+                    <td>Mason jar salad with chickpeas and quinoa</td>
+                    <td>Homemade bean burgers with sweet potato fries</td>
+                    <td>Edamame with sea salt</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>Shakshuka with white beans</td>
+                    <td>Chickpea "tuna" salad sandwich</td>
+                    <td>Indian dal with brown rice and vegetables</td>
+                    <td>Lentil energy balls</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>Bean and vegetable frittata</td>
+                    <td>Buddha bowl with roasted chickpeas</td>
+                    <td>Bean and vegetable chili with cornbread</td>
+                    <td>Chocolate hummus with fruit</td>
+                </tr>
+            </table>
+        </section>
+        
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add this CSS for the carousel functionality -->
+<style>
+   /* Image Carousel Styles - Updated for full size */
+    .image-holder {
+        width: 400px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    
+    .image-holder:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .carousel-container {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .carousel-slide {
+        width: 100%;
+        display: none;
+    }
+    
+    .carousel-slide.active {
+        display: block;
+    }
+    
+    .carousel-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+    
+    .carousel-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+    }
+    
+    .carousel-arrow {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .image-holder:hover .carousel-arrow {
+        opacity: 0.8;
+    }
+    
+    .carousel-arrow:hover {
+        opacity: 1 !important;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .carousel-prev {
+        margin-left: 10px;
+    }
+    
+    .carousel-next {
+        margin-right: 10px;
+    }
+    
+    .carousel-indicator {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        z-index: 10;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+    }
+    
+    .carousel-dot.active {
+        background: white;
+    }
+    
+    /* Image gallery layout */
+    .image-gallery {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+    
+    /* Accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    
+
+        /* Hamburger menu styles */
+        .hamburger-menu {
+            display: block;  /* Changed from 'none' to 'block' to always show */
+            cursor: pointer;
+            padding: 10px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #FFFFFF;
+            border-radius: 5px;
+        }
+        
+        .hamburger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #7c5c3e;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background: #e7d3c2;
+            transition: 0.4s;
+            padding-top: 60px;
+            z-index: 999;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar a {
+            display: block;
+            padding: 15px 25px;
+            color: #7c5c3e;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .sidebar a:hover {
+            background: #d4b49e;
+        }
+        
+        /* Removed media query that was hiding the hamburger menu */
+        </style>
+        </body>
+        </div>
+        </div>
+        </div>
 <!-- Updated MyPlate Recipes section with carousel functionality -->
 <div class="week-content" id="week-recipes" style="display: none;">
     <div class="container">
-        <h2 class="week-title">MyPlate Recipes</h2>
+        <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">MyPlate Recipes</h2>  
+</div>  
         <div class="image-gallery">
             <!-- Carousel 1 -->
             <div class="image-holder">
@@ -1896,7 +2766,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/4UxzypR.jpeg" alt="Pulse Recipe 1 Plated">
                     </div>
-                      <h2 class="week-title">Asian Slaw</h2>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Asian Slaw</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -1922,7 +2794,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/kQnZu8b.jpeg" alt="Pulse Recipe 2 Variation">
                     </div>
-                    <h2 class="week-title">Carrot Top Pesto</h2>
+                    <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Carrot Top Pesto</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -1977,7 +2851,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/zAXR0qA.png" alt="Pulse Recipe 4 Plated">
                     </div>
-                       <h2 class="week-title">Simple Frittatas</h2>
+                       <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Simple Frittatas</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2012,7 +2888,9 @@
                      <div class="carousel-slide">
                         <img src="https://i.imgur.com/yjB1xop.png" alt="Pulse Recipe 5 Plated">
                     </div>
-                    <h2 class="week-title">Broccomole</h2>
+                    <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Broccomole</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2065,7 +2943,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/SMvxtrg.png" alt="Pulse Recipe 7 Variation">
                     </div>
-                     <h2 class="week-title">Eggless Beet Pasta</h2>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Eggless Beet Pasta</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2093,7 +2973,9 @@
                      <div class="carousel-slide">
                      <img src="https://i.imgur.com/lbLFCJt.png" alt="Pulse Recipe 8 Variation">
                     </div>
-                     <h2 class="week-title">Kale Chips</h2>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Kale Chips</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2118,7 +3000,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/4NG0sHr.png" alt="Pulse Recipe 9 Variation">
                     </div>
-                     <h2 class="week-title">Curtido</h2>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Curtido</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2146,7 +3030,9 @@
                      <div class="carousel-slide">
                      <img src="https://i.imgur.com/WGtYza1.png" alt="Pulse Recipe 10 Variation">
                     </div>
-                     <h2 class="week-title">Pupusas</h2>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Pupusas</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2169,19 +3055,23 @@
         <!-- About Section -->  
 <div id="week-about" class="week-content" style="display: none;">  
     <div class="container">  
-        <h1 style="text-align: center; color: #003366; margin-bottom: 30px; border-bottom: 3px solid #CC0033; padding-bottom: 15px;">  
+        <h1 style="text-align: center; color: #003366; margin-bottom: 30px; border-bottom: px solid #CC0033; padding-bottom: 15px;">  
             Pulses: Effects Of Increasing Pulse Consumption On Cardiovascular Disease Risk Factors  
         </h1>  
 
         <!-- Study Purpose -->  
         <div style="border: 3px solid #003366; padding: 20px; margin-bottom: 30px; border-radius: 8px;">  
-            <h2 style="color: #CC0033;">Study Purpose</h2>  
+            <div style="display: flex; justify-content: center;">  
+    <h2 style="color: #CC0033;">Study Purpose</h2>  
+</div>   
+            <ul style="font-size: 1.3rem;"> 
             <p>The purpose of this USDA funded trial is to assess the effects of consuming two doses of pulses (1.5 cups/wk and 3 cups/wk) on:</p>  
-            <ul>  
-                <li>CVD risk factors (blood lipids, blood pressure, and HbA1c)</li>  
-                <li>Measure changes in overall diet quality</li>  
-                <li>Determine if pulse consumption alters self-reported satisfaction with life and food in adults</li>  
-            </ul>  
+            <div style="height: 30px;"></div>  
+            <ul style="font-size: 1.3rem;">  
+    <li>Evaluate comprehensive cardiovascular health markers, including critical blood lipid profiles, arterial blood pressure dynamics, and glycated hemoglobin (HbA1c) levels – key indicators of long-term metabolic health and cardiovascular resilience</li>  
+    <li>Assess transformative changes in nutritional excellence through detailed analysis of dietary patterns, nutrient density, and overall nutritional optimization</li>  
+    <li>Investigate the profound relationship between pulse consumption and quality of life metrics, examining how these nutrient-rich foods influence both psychological well-being and gastronomic satisfaction in adult participants</li>  
+</ul>  
 
 <div class="images-row" style="margin: 20px 0; display: flex; gap: 20px; justify-content: center;">  
     <img src="https://i.imgur.com/Z4mLbus.png" alt="Public Health 1" style="width: 500px; height: 300px; object-fit: cover; border: 8px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">  
@@ -2191,7 +3081,9 @@
 
         <!-- Public Health Context -->  
         <div style="border: 3px solid #CC0033; padding: 20px; margin-bottom: 30px; border-radius: 8px;">  
-            <h2 style="color: #003366;">Public Health Context</h2>  
+            <div style="display: flex; justify-content: center;">  
+    <h2 style="color: #003366;">Public Health Context</h2>  
+</div>   
             <ul>  
                 <li>60% of U.S. adults live with at least one chronic disease, and 40% have two or more diet-related chronic conditions</li>  
                 <li>Current dietary patterns contribute significantly to this health burden</li>  
@@ -2203,7 +3095,9 @@
 
         <!-- Pulses as a Nutritional Intervention -->  
         <div style="border: 3px solid #003366; padding: 20px; margin-bottom: 30px; border-radius: 8px;">  
-            <h2 style="color: #CC0033;">Pulses as a Nutritional Intervention</h2>  
+            <div style="display: flex; justify-content: center;">  
+    <h2 style="color: #CC0033;">Pulses as a Nutritional Intervention</h2>  
+</div>  
             <ul>  
                 <li>Pulses (beans, peas, lentils, chickpeas) are nutrient-dense foods featured in many healthy dietary patterns</li>  
                 <li>Key nutritional characteristics: high fiber, low glycemic index, high protein, low fat, and rich in bioactive compounds</li>  
@@ -2218,7 +3112,9 @@
 
         <!-- Research Gap -->  
         <div style="border: 3px solid #CC0033; padding: 20px; margin-bottom: 30px; border-radius: 8px;">  
-            <h2 style="color: #003366;">Research Gap</h2>  
+            <div style="display: flex; justify-content: center;">  
+    <h2 style="color: #003366;">Research Gap</h2>  
+</div>  
             <ul>  
                 <li>While studies show regular pulse consumption can reduce cardiovascular disease (CVD) risk factors, the optimal intake amount remains unclear</li>  
                 <li>This study aims to determine if there is justification to increase the DGA recommendation for pulses</li>  
@@ -2273,7 +3169,9 @@
                     <p style="font-size: 1rem; color: #7c5c3e;">Christopher specializes in ....</p>  
                 </div>
                 </div>
-                 <h2 style="text-align: center; color: #003366; font-size: 2rem; margin-bottom: 30px;">Tucson Village Farm</h2>     
+                 <div style="display: flex; justify-content: center;">  
+    <h2 style="text-align: center; color: #003366; font-size: 2rem; margin-bottom: 30px;">Tucson Village Farm</h2>  
+</div>  
             </div>  
            <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">  
     <!-- Researcher 5 -->  
@@ -2510,4 +3408,4 @@
     });
     </script>
     </body>  
-</html
+</html>
