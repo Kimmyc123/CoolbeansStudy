@@ -256,7 +256,47 @@
             .nav a, .image-placeholder {
                 padding: 12px 8px;
             }
-        }</style>  
+        }
+        @media screen and (max-width: 768px) {  
+    .container {  
+        margin: 20px 10px;  
+        padding: 20px;  
+    }  
+    .nav a {  
+        margin: 0 10px;  
+        font-size: 16px;  
+    }  
+    .images-row {  
+        flex-wrap: wrap;  
+        gap: 10px;  
+    }  
+    .image-placeholder {  
+        width: calc(50% - 5px);  
+        min-width: 120px;  
+    }  
+    .slides-placeholder {  
+        padding: 20px;  
+        font-size: 18px;  
+    }  
+}  
+@media screen and (max-width: 480px) {  
+    .container {  
+        margin: 10px;  
+        padding: 15px;  
+    }  
+    .nav {  
+        padding: 15px 0;  
+    }  
+    .nav a {  
+        margin: 0 8px;  
+        font-size: 14px;  
+    }  
+    .image-placeholder {  
+        width: 100%;  
+        margin-bottom: 10px;  
+    }  
+}  
+        </style>  
 </head>  
 <body>  
 <!-- University of Arizona Header Banner with Centered Title and About Button -->  
@@ -3345,6 +3385,45 @@
                 align-items: center;
             }
         }
+        @media screen and (max-width: 768px) {  
+    .container {  
+        margin: 20px 10px;  
+        padding: 20px;  
+    }  
+    .nav a {  
+        margin: 0 10px;  
+        font-size: 16px;  
+    }  
+    .images-row {  
+        flex-wrap: wrap;  
+        gap: 10px;  
+    }  
+    .image-placeholder {  
+        width: calc(50% - 5px);  
+        min-width: 120px;  
+    }  
+    .slides-placeholder {  
+        padding: 20px;  
+        font-size: 18px;  
+    }  
+}  
+@media screen and (max-width: 480px) {  
+    .container {  
+        margin: 10px;  
+        padding: 15px;  
+    }  
+    .nav {  
+        padding: 15px 0;  
+    }  
+    .nav a {  
+        margin: 0 8px;  
+        font-size: 14px;  
+    }  
+    .image-placeholder {  
+        width: 100%;  
+        margin-bottom: 10px;  
+    }  
+}  
     </style>
 </head>
 <body>
