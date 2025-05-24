@@ -348,6 +348,12 @@
         color: white;  
     }  
 
+    .nav {  
+    position: sticky;  
+    top: 0;  
+    z-index: 1000;  
+}  
+
     .about-link {  
         background: #CC0033 !important;  
         color: white !important;  
@@ -438,7 +444,8 @@
         <a href="#" class="nav-link" data-week="4">Week 4: Chickpeas</a>  
         <a href="#" class="nav-link" data-week="5">Week 5: Red Lentils</a>  
         <a href="#" class="nav-link" data-week="6">Week 6: Kidney Beans</a>  
-        <a href="#" class="nav-link" data-week="researchers">About the Researchers</a>   
+        <a href="#" class="nav-link" data-week="researchers">About the Researchers</a>
+        <a class="nav-link" data-week="featured" onclick="showWeek('featured')">Featured Recipes</a>  
     </div>  
      <!-- Hamburger Menu Button -->
     <div class="hamburger-menu">
@@ -455,6 +462,7 @@
         <a href="#" class="nav-link" data-week="recipes">MyPlate Recipes</a>
         <a href="#" class="nav-link" data-week="learnmore">Learn More</a>
         <a href="#" class="nav-link" data-week="wheel">NEW! Recipe Generator Wheel</a>
+        <a href="#" class="nav-link" data-week="faq">FAQ</a>
     </div>
 </div> 
 
@@ -462,6 +470,750 @@
 
 
     <!-- Week Content Sections -->  
+     <div class="week-content" id="week-featured">   
+        <div class="container"> 
+       <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Participants - Recipe Tab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #001f5c 0%, #8B0000 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            color: #001f5c;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .participant-card {
+            min-width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .participant-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8B0000, #001f5c);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .participant-photo::after {
+            content: '👤';
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .content-display {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .recipe-image {
+            width: 300px;
+            height: 250px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-radius: 15px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-image::before {
+            content: '🍽️';
+            font-size: 4rem;
+            opacity: 0.6;
+        }
+
+        .recipe-content {
+            text-align: left;
+            display: none;
+        }
+
+        .recipe-content.active {
+            display: block;
+        }
+
+        .recipe-title {
+            color: #8B0000;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .recipe-section {
+            margin-bottom: 30px;
+        }
+
+        .recipe-section h3 {
+            color: #001f5c;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #8B0000;
+            padding-bottom: 5px;
+        }
+
+        .ingredients-list, .instructions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredients-list li {
+            background: #f8f9fa;
+            padding: 8px 15px;
+            margin: 5px 0;
+            border-left: 4px solid #8B0000;
+            border-radius: 5px;
+        }
+
+        .instructions-list li {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-left: 4px solid #001f5c;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .instructions-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: -12px;
+            top: 12px;
+            background: #001f5c;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .instructions-list {
+            counter-reset: step-counter;
+        }
+
+        .nutrition-facts {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .nutrition-facts.active {
+            display: block;
+        }
+
+        .nutrition-title {
+            color: #8B0000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #001f5c;
+            padding-bottom: 10px;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .nutrition-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #8B0000;
+        }
+
+        .allergen-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #001f5c;
+        }
+
+        .allergen-section h4 {
+            color: #001f5c;
+            margin-bottom: 10px;
+        }
+
+        .allergen-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .allergen-tag {
+            background: #8B0000;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .content-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .content-nav-btn {
+            background: transparent;
+            border: 2px solid #001f5c;
+            color: #001f5c;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .content-nav-btn.active,
+        .content-nav-btn:hover {
+            background: #001f5c;
+            color: white;
+        }
+
+        .carousel-nav {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            background: #8B0000;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: #001f5c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 31, 92, 0.4);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .slide-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #8B0000;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .participant-card {
+                padding: 20px;
+            }
+
+            .recipe-image {
+                width: 250px;
+                height: 200px;
+            }
+
+            .nutrition-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Featured Participants' Recipes</h1>
+            <p>Discover amazing recipes from our community</p>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <!-- Participant 1 -->
+                <div class="participant-card">
+                    <h2 class="recipe-title blue-title">Sourdough Pulse Rolls</h2> 
+                     <div class="image-gallery">  
+    <img src="https://i.imgur.com/dw0ubUc.jpeg"   
+         style="max-width: 600px; /* adjust this value as needed */  
+                display: block;  
+                margin: 0 auto;">  
+</div>  
+                    
+                    <div class="content-display">
+                        <!-- Recipe Image (Always visible initially) -->
+                        <div id="image-0" class=></div>
+                        
+                        <!-- Recipe Content -->
+                        <div id="recipe-0" class="recipe-content">
+                            <h2 class="recipe-title blue-title">Sourdough Pulse Rolls</h2>  
+                            
+                            <div class="recipe-section">
+                                <h3>Ingredients</h3>
+                                <ul class="ingredients-list">
+                                    <li>Sourdough Starter (I usually use about a cup)</li>
+                                    <li>7 cups of flour (does not really matter, as long as it suitable for bread)</li>
+                                    <li>Water as needed (about 5-6 cups)</li>
+                                    <li>2 cups of pulses</li>
+                                    <li>Extra flour to adjust dough consistency</li>
+                                </ul>
+                            </div>
+
+                            <div class="recipe-section">
+                                <h3>Instructions</h3>
+                                <ol class="instructions-list">  
+                                    <li>Prepare the sourdough by mixing the starter and the flour and water. I like to expand over 3 days, by adding 1 cup of flour on day 1, 2 cups on day 2, and 3 cups on day 3 and slowly increasing thickness of the dough.</li>  
+                                    <li>Save about one cup of the dough on Day 3 as starter for the next batch (you can freeze it, in the fridge it is good for about 2 weeks).</li>  
+                                    <li>On Day 4: finish the dough adding flour to get a stiff, non-tacky consistency, form it into the desired shape, let it rest for 1-2 hours at room temperature.</li>  
+                                    <li>Bake for 30-45 minutes at 450 degrees.</li>  
+                                </ol>  
+                            </div>
+                        </div>
+                        
+                        <!-- Nutrition Facts -->
+                        <div id="nutrition-0" class="nutrition-facts">
+                            <h3 class="nutrition-title">Nutrition Facts</h3>
+                            <div class="nutrition-grid">
+                                <div class="nutrition-item">
+                                    <span>Calories</span>
+                                    <span>344</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Protein</span>
+                                    <span>11.6g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Carbs</span>
+                                    <span>70.1g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Fat</span>
+                                    <span>1.1g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Fiber</span>
+                                    <span>5.3g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Sodium</span>
+                                    <span>83mg</span>
+                                </div>
+                            </div>
+                            
+                            <div class="allergen-section">
+                                <h4>Contains Allergens:</h4>
+                                <div class="allergen-tags">
+                                    <span class="allergen-tag"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-nav">
+                        <button class="content-nav-btn active" onclick="showContent(0, 'image')">Photo</button>
+                        <button class="content-nav-btn" onclick="showContent(0, 'recipe')">Recipe</button>
+                        <button class="content-nav-btn" onclick="showContent(0, 'nutrition')">Nutrition</button>
+                    </div>
+                </div>
+
+                <!-- Participant 2 -->
+                <div class="participant-card">
+                   <h2 class="recipe-title blue-title">Spicy Black Bean Tacos</h2> 
+                     <div class="image-gallery">  
+    <img src="https://i0.wp.com/s.lightorangebean.com/media/20240914145357/veggie-bean-tacos_done.png?fit=1376%2C864&quality=80&ssl=1"   
+         style="max-width: 600px; /* adjust this value as needed */  
+                display: block;  
+                margin: 0 auto;">  
+</div>  
+                    
+                    <div class="content-display">
+                        <!-- Recipe Image -->
+                        <div id="image-1" class=></div>
+                        
+                        <!-- Recipe Content -->
+                        <div id="recipe-1" class="recipe-content">
+                            <h2 class="recipe-title">Spicy Black Bean Tacos</h2>
+                            
+                            <div class="recipe-section">
+                                <h3>Ingredients</h3>
+                                <ul class="ingredients-list">
+                                    <li>2 cans black beans, drained and rinsed</li>
+                                    <li>8 corn tortillas</li>
+                                    <li>1 avocado, sliced</li>
+                                    <li>1 cup shredded cabbage</li>
+                                    <li>1/2 cup cilantro, chopped</li>
+                                    <li>1 lime, cut into wedges</li>
+                                    <li>1 tsp cumin</li>
+                                    <li>1 tsp chili powder</li>
+                                    <li>Hot sauce to taste</li>
+                                </ul>
+                            </div>
+
+                            <div class="recipe-section">
+                                <h3>Instructions</h3>
+                                <ol class="instructions-list">
+                                    <li>Heat black beans with cumin and chili powder in a pan.</li>
+                                    <li>Warm tortillas in a dry skillet or microwave.</li>
+                                    <li>Mash half the beans for texture, leave others whole.</li>
+                                    <li>Fill tortillas with bean mixture.</li>
+                                    <li>Top with avocado, cabbage, cilantro, and hot sauce.</li>
+                                    <li>Serve with lime wedges.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <!-- Nutrition Facts -->
+                        <div id="nutrition-1" class="nutrition-facts">
+                            <h3 class="nutrition-title">Nutrition Facts</h3>
+                            <div class="nutrition-grid">
+                                <div class="nutrition-item">
+                                    <span>Calories</span>
+                                    <span>285</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Protein</span>
+                                    <span>11g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Carbs</span>
+                                    <span>52g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Fat</span>
+                                    <span>8g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Fiber</span>
+                                    <span>15g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Sodium</span>
+                                    <span>420mg</span>
+                                </div>
+                            </div>
+                            
+                            <div class="allergen-section">
+                                <h4>Contains Allergens:</h4>
+                                <div class="allergen-tags">
+                                    <span class="allergen-tag">None</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-nav">
+                        <button class="content-nav-btn active" onclick="showContent(1, 'image')">Photo</button>
+                        <button class="content-nav-btn" onclick="showContent(1, 'recipe')">Recipe</button>
+                        <button class="content-nav-btn" onclick="showContent(1, 'nutrition')">Nutrition</button>
+                    </div>
+                </div>
+
+                <!-- Participant 3 -->
+                <div class="participant-card">
+                    
+                    
+                    <div class="content-display">
+                        <!-- Recipe Image -->
+                        <div id="image-2" class="recipe-image"></div>
+                        
+                        <!-- Recipe Content -->
+                        <div id="recipe-2" class="recipe-content">
+                            <h2 class="recipe-title">Under Construction- Check Back Later!</h2>
+                            
+                            <div class="recipe-section">
+                                <h3>Ingredients</h3>
+                                <ul class="ingredients-list">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+
+                            <div class="recipe-section">
+                                <h3>Instructions</h3>
+                                <ol class="instructions-list">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <!-- Nutrition Facts -->
+                        <div id="nutrition-2" class="nutrition-facts">
+                            <h3 class="nutrition-title">Nutrition Facts</h3>
+                            <div class="nutrition-grid">
+                                <div class="nutrition-item">
+                                    <span>Calories</span>
+                                    <span></span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Protein</span>
+                                    <span></span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Carbs</span>
+                                    <span></span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Fat</span>
+                                    <span></span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Fiber</span>
+                                    <span></span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span>Sodium</span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            
+                            <div class="allergen-section">
+                                <h4>Contains Allergens:</h4>
+                                <div class="allergen-tags">
+                                    <span class="allergen-tag"></span>
+                                    <span class="allergen-tag"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-nav">
+                        <button class="content-nav-btn active" onclick="showContent(2, 'image')">Photo</button>
+                        <button class="content-nav-btn" onclick="showContent(2, 'recipe')">Recipe</button>
+                        <button class="content-nav-btn" onclick="showContent(2, 'nutrition')">Nutrition</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-indicators">
+            <div class="indicator active" onclick="goToSlide(0)"></div>
+            <div class="indicator" onclick="goToSlide(1)"></div>
+            <div class="indicator" onclick="goToSlide(2)"></div>
+        </div>
+
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn" onclick="previousSlide()">← Previous</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function updateCarousel() {
+            const wrapper = document.getElementById('carouselWrapper');
+            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indicators
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+
+        function showContent(participantIndex, contentType) {
+            // Hide all content for this participant
+            document.getElementById(`image-${participantIndex}`).style.display = 'none';
+            document.getElementById(`recipe-${participantIndex}`).classList.remove('active');
+            document.getElementById(`nutrition-${participantIndex}`).classList.remove('active');
+            
+            // Show selected content
+            if (contentType === 'image') {
+                document.getElementById(`image-${participantIndex}`).style.display = 'flex';
+            } else if (contentType === 'recipe') {
+                document.getElementById(`recipe-${participantIndex}`).classList.add('active');
+            } else if (contentType === 'nutrition') {
+                document.getElementById(`nutrition-${participantIndex}`).classList.add('active');
+            }
+            
+            // Update navigation buttons for this participant
+            const participantCards = document.querySelectorAll('.participant-card');
+            const navButtons = participantCards[participantIndex].querySelectorAll('.content-nav-btn');
+            navButtons.forEach((btn, index) => {
+                btn.classList.remove('active');
+                if ((index === 0 && contentType === 'image') ||
+                    (index === 1 && contentType === 'recipe') ||
+                    (index === 2 && contentType === 'nutrition')) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize carousel
+        updateCarousel();
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+
+        // Add touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                if (diffX > 0) {
+                    nextSlide();
+                } else {
+                    previousSlide();
+                }
+            }
+        });
+    </script>
+</body>     
+    </div>
+    </div>
+    </div>
+    </div>
     <div class="week-content" id="week-1" style="display: none;">  
         <div class="container">  
 
@@ -2703,15 +3455,200 @@
         </div>
         </div>
         </div>
+<!-- Add this CSS for the carousel functionality -->
+<style>
+   /* Image Carousel Styles - Updated for full size */
+    .image-holder {
+        width: 400px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    
+    .image-holder:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .carousel-container {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .carousel-slide {
+        width: 100%;
+        display: none;
+    }
+    
+    .carousel-slide.active {
+        display: block;
+    }
+    
+    .carousel-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+    
+    .carousel-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+    }
+    
+    .carousel-arrow {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .image-holder:hover .carousel-arrow {
+        opacity: 0.8;
+    }
+    
+    .carousel-arrow:hover {
+        opacity: 1 !important;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .carousel-prev {
+        margin-left: 10px;
+    }
+    
+    .carousel-next {
+        margin-right: 10px;
+    }
+    
+    .carousel-indicator {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        z-index: 10;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+    }
+    
+    .carousel-dot.active {
+        background: white;
+    }
+    
+    /* Image gallery layout */
+    .image-gallery {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+    
+    /* Accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    
+    /* Hamburger menu styles */
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background: #FFFFFF;
+        border-radius: 5px;
+    }
+    
+    .hamburger-menu span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #7c5c3e;
+        margin: 5px 0;
+        transition: 0.4s;
+    }
+    
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background: #e7d3c2;
+        transition: 0.4s;
+        padding-top: 60px;
+        z-index: 999;
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    .sidebar a {
+        display: block;
+        padding: 15px 25px;
+        color: #7c5c3e;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    
+    .sidebar a:hover {
+        background: #d4b49e;
+    }
+</style>
+
 <!-- Updated MyPlate Recipes section with carousel functionality -->
 <div class="week-content" id="week-recipes" style="display: none;">
     <div class="container">
         <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">MyPlate Recipes</h2>  
-</div>  
+            <h2 class="week-title">MyPlate Recipes</h2>  
+        </div>  
         <div class="image-gallery">
             <!-- Carousel 1 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Asian Slaw</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="1">
                     <div class="carousel-slide active">
                         <img src="https://www.feastingathome.com/wp-content/uploads/2018/09/asian-slaw-100-4.jpg" alt="Pulse Recipe 1">
@@ -2725,9 +3662,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/4UxzypR.jpeg" alt="Pulse Recipe 1 Plated">
                     </div>
-                     <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Asian Slaw</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2738,6 +3672,7 @@
                     </div>
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
+                        <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
                     </div>
@@ -2746,6 +3681,9 @@
             
             <!-- Carousel 2 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Carrot Top Pesto</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="2">
                     <div class="carousel-slide active">
                         <img src="https://minimalistbaker.com/wp-content/uploads/2023/02/Carrot-Top-Pesto-6.jpg">
@@ -2753,9 +3691,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/kQnZu8b.jpeg" alt="Pulse Recipe 2 Variation">
                     </div>
-                    <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Carrot Top Pesto</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2766,7 +3701,6 @@
                     </div>
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
-                        <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
                     </div>
                 </div>
@@ -2774,6 +3708,9 @@
             
             <!-- Carousel 3 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Simple Salad Dressing</h2>  
+                </div>
                 <div class="carousel-container" data-carousel="3">
                     <div class="carousel-slide active">
                         <img src="https://flavorthemoments.com/wp-content/uploads/2018/05/easy-greek-salad-dressing-2-flavorthemoments-600x875.jpg" alt="Pulse Recipe 3">
@@ -2781,7 +3718,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/c9tZPDn.jpeg" alt="Pulse Recipe 3 Variation">
                     </div>
-                    <h2 class="week-title">Simple Salad Dressing</h2>
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2793,13 +3729,15 @@
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
                     </div>
                 </div>
             </div>
             
             <!-- Carousel 4 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Simple Frittatas</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="4">
                     <div class="carousel-slide active">
                         <img src="https://sallysbakingaddiction.com/wp-content/uploads/2023/05/frittatas.jpg" alt="Pulse Recipe 4">
@@ -2810,9 +3748,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/zAXR0qA.png" alt="Pulse Recipe 4 Plated">
                     </div>
-                       <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Simple Frittatas</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2831,6 +3766,9 @@
             
             <!-- Carousel 5 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Broccomole</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="5">
                     <div class="carousel-slide active">
                         <img src="https://i.imgur.com/W4JWvg2.jpeg" alt="Pulse Recipe 5">
@@ -2841,15 +3779,12 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/Jx00CIj.png" alt="Pulse Recipe 5 Plated">
                     </div>
-                     <div class="carousel-slide">
+                    <div class="carousel-slide">
                         <img src="https://i.imgur.com/In8hUYW.png" alt="Pulse Recipe 5 Plated">
                     </div>
-                     <div class="carousel-slide">
+                    <div class="carousel-slide">
                         <img src="https://i.imgur.com/yjB1xop.png" alt="Pulse Recipe 5 Plated">
                     </div>
-                    <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Broccomole</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2862,11 +3797,17 @@
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
                     </div>
                 </div>
             </div>
+
             <!-- Carousel 6 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Luna's Chia Breakfast Bowl</h2>  
+                </div>
                 <div class="carousel-container" data-carousel="6">
                     <div class="carousel-slide active">
                         <img src="https://wholefoodsoulfoodkitchen.com/wp-content/uploads/2023/02/chia-pudding-with-yogurt-2.jpg" alt="Pulse Recipe 6">
@@ -2877,7 +3818,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/KvPzr0a.png" alt="Pulse Recipe 6 Plated">
                     </div>
-                     <h2 class="week-title">Luna’s Chia Breakfast Bowl</h2>
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2893,8 +3833,12 @@
                     </div>
                 </div>
             </div>
+
             <!-- Carousel 7 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Eggless Beet Pasta</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="7">
                     <div class="carousel-slide active">
                         <img src="https://sweetsimplevegan.com/wp-content/uploads/2024/07/Vegan-Beet-Pasta-Sauce-recipe-sweet-simple-vegan-2.jpg" alt="Pulse Recipe 6">
@@ -2902,9 +3846,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/SMvxtrg.png" alt="Pulse Recipe 7 Variation">
                     </div>
-                     <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Eggless Beet Pasta</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2916,12 +3857,15 @@
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
                     </div>
                 </div>
             </div>
-              <!-- Carousel 8 -->
+
+            <!-- Carousel 8 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Kale Chips</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="8">
                     <div class="carousel-slide active">
                         <img src="https://minimalistbaker.com/wp-content/uploads/2015/07/VEGAN-CHEESY-Kale-Chips-So-simple-8-ingredients-30-minutes-DELICIOUS-vegan-glutenfree-recipe-snack-kale-healthy-minimalistbaker.jpg" alt="Pulse Recipe 8">
@@ -2929,12 +3873,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/3Khkd1q.png" alt="Pulse Recipe 8 Variation">
                     </div>
-                     <div class="carousel-slide">
-                     <img src="https://i.imgur.com/lbLFCJt.png" alt="Pulse Recipe 8 Variation">
+                    <div class="carousel-slide">
+                        <img src="https://i.imgur.com/lbLFCJt.png" alt="Pulse Recipe 8 Variation">
                     </div>
-                     <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Kale Chips</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2950,8 +3891,12 @@
                     </div>
                 </div>
             </div>
-             <!-- Carousel 9 -->
+
+            <!-- Carousel 9 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Curtido</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="9">
                     <div class="carousel-slide active">
                         <img src="https://www.simplyrecipes.com/thmb/ylX_-8CnwANV-DYzmaSdqNNyrVU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Curtido-LEAD-7-f1949949cbdc4bad88fb06e83bfc8b37.jpg" alt="Pulse Recipe 9">
@@ -2959,9 +3904,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/4NG0sHr.png" alt="Pulse Recipe 9 Variation">
                     </div>
-                     <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Curtido</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -2973,12 +3915,15 @@
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
-        </div>
-    </div>
-</div>
-  <!-- Carousel 10 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel 10 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Pupusas</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="10">
                     <div class="carousel-slide active">
                         <img src="https://www.simplyrecipes.com/thmb/FxM70WUalkiC12O2jbX3gh2jGH8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Pupusas-LEAD-1-d916697aff0b4a08857fd8e4393756cd.jpg" alt="Pulse Recipe 10">
@@ -2986,12 +3931,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/VG9Geef.png" alt="Pulse Recipe 10 Variation">
                     </div>
-                     <div class="carousel-slide">
-                     <img src="https://i.imgur.com/WGtYza1.png" alt="Pulse Recipe 10 Variation">
+                    <div class="carousel-slide">
+                        <img src="https://i.imgur.com/WGtYza1.png" alt="Pulse Recipe 10 Variation">
                     </div>
-                     <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Pupusas</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -3004,30 +3946,31 @@
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
-        </div>
-    </div>
-</div>
-<!-- Carousel 11 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel 11 -->
             <div class="image-holder">
-                <div class="carousel-container" data-carousel="10">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Eggplant Almond Enchiladas</h2>  
+                </div>  
+                <div class="carousel-container" data-carousel="11">
                     <div class="carousel-slide active">
                         <img src="https://www.vodkaandbiscuits.com/wp-content/uploads/2017/03/Eggplant-Almond-Enchiladas.jpg" alt="Pulse Recipe 11">
                     </div>
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/WuxiQWF.png" alt="Pulse Recipe 11 Variation">
                     </div>
-                     <div class="carousel-slide">
-                     <img src="https://i.imgur.com/hI2iuCO.png" alt="Pulse Recipe 11 Variation">
+                    <div class="carousel-slide">
+                        <img src="https://i.imgur.com/hI2iuCO.png" alt="Pulse Recipe 11 Variation">
                     </div>
                     <div class="carousel-slide">
-                     <img src="https://i.imgur.com/vkx5Qf3.png" alt="Pulse Recipe 11 Variation">
+                        <img src="https://i.imgur.com/vkx5Qf3.png" alt="Pulse Recipe 11 Variation">
                     </div>
                     <div class="carousel-slide">
-                     <img src="https://i.imgur.com/1rOYRY8.png" alt="Pulse Recipe 11 Variation">
+                        <img src="https://i.imgur.com/1rOYRY8.png" alt="Pulse Recipe 11 Variation">
                     </div>
-                     <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Eggplant Almond Enchiladas</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -3040,11 +3983,17 @@
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
-</div>
-</div>
-</div>
- <!-- Carousel 12 -->
+                        <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel 12 -->
             <div class="image-holder">
+                <div style="display: flex; justify-content: center;">  
+                    <h2 class="week-title">Cowboy Caviar</h2>  
+                </div>  
                 <div class="carousel-container" data-carousel="12">
                     <div class="carousel-slide active">
                         <img src="https://carlsbadcravings.com/wp-content/uploads/2023/05/Cowboy-Caviar-Texas-Caviar-7c.jpg" alt="Pulse Recipe 10">
@@ -3052,9 +4001,6 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/B5kEhX2.png" alt="Pulse Recipe 12 Variation">
                     </div>
-                     <div style="display: flex; justify-content: center;">  
-    <h2 class="week-title">Cowboy Caviar</h2>  
-</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -3066,7 +4012,75 @@
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CRITICAL: Add this JavaScript at the end of your HTML file, before the closing </body> tag -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all carousels
+    const carousels = document.querySelectorAll('.carousel-container');
+    
+    carousels.forEach(carousel => {
+        let currentSlide = 0;
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        
+        // Function to show a specific slide
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide and dot
+            if (slides[index] && dots[index]) {
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+        }
+        
+        // Function to go to next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Function to go to previous slide
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Add event listeners to navigation buttons
+        if (prevBtn && nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+        }
+        
+        // Add event listeners to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+        
+        // Optional: Auto-advance slides every 5 seconds
+        // Uncomment the lines below if you want automatic slideshow
+        /*
+        setInterval(() => {
+            nextSlide();
+        }, 5000);
+        */
+    });
+});
+</script>
         </div>
     </div>
 </div>
@@ -3248,7 +4262,424 @@ Geovana has published scientific research on the effects of intradialytic exerci
     onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.1)';"  
   >  
     Contact Us  
-  </a>  
+  </a>
+  </div>  
+</div>
+</div>
+<div class="week-content" id="week-faq" style="display: none;">
+    <title>Pulses Clinical Trial - FAQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+          .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color:  #003366 60%, #CC0033 100%;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .faq-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);
+        }
+        
+       .faq-question {  
+    background: linear-gradient(135deg, #003366 0%, #0066CC 100%);  
+    color: white;  
+    padding: 20px;  
+    cursor: pointer;  
+    font-weight: bold;  
+    font-size: 1.1em;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    transition: all 0.3s ease;  
+}  
+  
+.faq-question:hover {  
+    background: linear-gradient(135deg, #0066CC 0%, #003366 100%);  
+}  
+        
+        .faq-question .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background: #f9f9f9;
+            display: none;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .faq-answer.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .faq-item.active .faq-question .icon {
+            transform: rotate(180deg);
+        }
+        
+        .contact-section {
+            background: rgba(139, 69, 19, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            color: #8B4513;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B4513;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #8B4513;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #8B4513;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #8B4513;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .faq-question {
+                padding: 15px;
+                font-size: 1em;
+            }
+            
+            .faq-answer {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🫘 Pulses Study FAQ</h1>
+            <p>Frequently Asked Questions About Our Research</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>When will the next cohort begin?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Recruitment begins following IRB approval and continues until 180 subjects are enrolled. The next cohort is expected to start within 2-3 months of current study completion.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Are previous participants able to participate again?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No, previous participants are excluded to avoid carryover effects and maintain study integrity. Each participant can only take part in the study once.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How can participants spread word of future studies?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Participants can refer friends and family through word-of-mouth, share study flyers from Tucson Village Farms, or provide contact information to the research team for future recruitment. We appreciate your help in spreading awareness!
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Will participants receive individualized results of their lab work?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No, participants will not receive their individual lab results (blood lipids, blood pressure, HbA1c).
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Where can participants access the general/full results of each study?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    General study results will be posted on the university research website and shared via email newsletter to all participants within 6 months of study completion.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How will participants' information be disposed of following the study's conclusion?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    All participant data will be securely destroyed 7 years after study completion per university policy. Participants can request immediate data deletion at any time.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Who is eligible to participate?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Participants must be aged 18-65, and free from major chronic diseases. Specific inclusion and exclusion criteria will be reviewed during the screening process.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What does participation involve?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Participation involves 6 bi-weekly cooking sessions (1 hr each with TVF), two visits (Baseline and Endpoint) to our research lab center (fasting blood draw & Questionaires), completing weekly food logs, and providing blood samples for lab analysis.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is there compensation for participation?</span>
+                    <span class="icon">▼</span>
+                </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What are the potential risks?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Risks are minimal and primarily related to blood draws (slight discomfort, bruising). Some participants may experience caffeine-related effects like jitters or sleep disturbance. All risks will be thoroughly discussed during consent.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I withdraw from the study?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, participation is completely voluntary and you can withdraw at any time without penalty. Your decision will not affect any future medical care or benefits.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How is participant privacy protected?</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    All data is de-identified and stored securely. Only authorized research staff have access to participant information. The study follows all HIPAA guidelines and university privacy policies.
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-section">
+            <h3>Have a Question Not Listed Here?</h3>
+            <p>Submit your question below and we'll get back to you within 24 hours.</p>
+            
+            <form class="contact-form" action="mailto:kceus@arizona.edu" method="post" enctype="text/plain" onsubmit="prepareEmail(event)">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="question">Your Question:</label>
+                    <textarea id="question" name="question" placeholder="Type your question here..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Question</button>
+            </form>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="https://kimmyc123.github.io/CoolbeansStudy/" class="back-link">← Back to Study Information</a>
+        </div>
+    </div>
+    
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const faqAnswer = faqItem.querySelector('.faq-answer');
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.faq-answer').classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                faqItem.classList.add('active');
+                faqAnswer.classList.add('active');
+            }
+        }
+        
+        function prepareEmail(event) {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const question = document.getElementById('question').value;
+            
+            // Create email body
+            const emailBody = `Cool Beans Study Question%0D%0A%0D%0AFrom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AQuestion:%0D%0A${question}`;
+            
+            // Update form action with subject and body
+            const form = event.target;
+            form.action = `mailto:kceus@arizona.edu?subject=Cool Beans Study Question from ${name}&body=${emailBody}`;
+            
+            // Show confirmation message
+            setTimeout(() => {
+                alert(`Your email client should open with a pre-filled message to kceus@arizona.edu. If it doesn't open automatically, please copy the information and send it manually to: kceus@arizona.edu`);
+                // Reset form after a short delay
+                setTimeout(() => {
+                    document.querySelector('.contact-form').reset();
+                }, 1000);
+            }, 100);
+        }
+        
+        // Add smooth scrolling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-expand first FAQ item
+            const firstFAQ = document.querySelector('.faq-item');
+            if (firstFAQ) {
+                firstFAQ.classList.add('active');
+                firstFAQ.querySelector('.faq-answer').classList.add('active');
+            }
+        });
+    </script>  
 </div>  
 </div>
 </div>
@@ -3903,21 +5334,30 @@ Geovana has published scientific research on the effects of intradialytic exerci
     const links = document.querySelectorAll('.nav-link');  
     const weekContents = document.querySelectorAll('.week-content');  
 
-    // Function to show the selected week and update navigation  
-    function showWeek(weekNum) {  
-        weekContents.forEach(function(div) {  
-            div.style.display = 'none';  
-        });  
-        // Handle both numeric weeks and the "about" section  
-        const targetId = isNaN(weekNum) ? 'week-' + weekNum : 'week-' + weekNum;  
-        document.getElementById(targetId).style.display = 'block';  
-        links.forEach(function(link) {  
-            link.classList.remove('active');  
-            if (link.getAttribute('data-week') == weekNum) {  
-                link.classList.add('active');  
-            }  
-        });  
+   function showWeek(weekNum) {  
+    // Hide all week-content sections  
+    document.querySelectorAll('.week-content').forEach(function(div) {  
+        div.style.display = 'none';  
+    });  
+  
+    // Remove 'active' class from all nav links  
+    document.querySelectorAll('.nav-link').forEach(function(link) {  
+        link.classList.remove('active');  
+    });  
+  
+    // Show the selected section  
+    var targetId = 'week-' + weekNum;  
+    var targetDiv = document.getElementById(targetId);  
+    if (targetDiv) {  
+        targetDiv.style.display = 'block';  
     }  
+  
+    // Highlight the active nav link  
+    var activeLink = document.querySelector('.nav-link[data-week=\"' + weekNum + '\"]');  
+    if (activeLink) {  
+        activeLink.classList.add('active');  
+    }  
+}  
 
     // Add click event listeners to navigation links  
     links.forEach(function(link) {  
