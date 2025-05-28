@@ -460,8 +460,9 @@
         <a href="#" class="nav-link" data-week="8">Week 8: Pigeon Peas</a>
         <a href="#" class="nav-link" data-week="9">Week 9: Pinto Beans</a>
         <a href="#" class="nav-link" data-week="recipes">MyPlate Recipes</a>
+        <a href="#" class="nav-link" data-week="wheel">Recipe Generator</a>
         <a href="#" class="nav-link" data-week="learnmore">Learn More</a>
-        <a href="#" class="nav-link" data-week="wheel">NEW! Recipe Generator Wheel</a>
+        <a href="#" class="nav-link" data-week="book">Download Cook Book</a>
         <a href="#" class="nav-link" data-week="faq">FAQ</a>
     </div>
 </div> 
@@ -4685,6 +4686,267 @@ Geovana has published scientific research on the effects of intradialytic exerci
 </div>  
 </div>
 </div>
+<div class="week-content" id="week-book" style="display: none;">
+    <title>Pulse Recipe Wheel</title>
+   <style>
+   .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #AB0520, #003366);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        h1 {
+            color: #AB0520;
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .pdf-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px dashed #AB0520;
+        }
+
+        .pdf-icon {
+            width: 60px;
+            height: 60px;
+            background: #AB0520;
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .pdf-info {
+            margin-bottom: 20px;
+        }
+
+        .pdf-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .pdf-details {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #AB0520;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #8a0419;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(171, 5, 32, 0.3);
+        }
+
+        .btn-secondary {
+            background: #003366;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #002244;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+        }
+
+        .btn:focus {
+            outline: 2px solid #AB0520;
+            outline-offset: 2px;
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <div class="header">
+            <div class="logo-placeholder">
+                UA
+            </div>
+            <h1>Power of Pulses Recipe Book</h1>
+            <p class="subtitle">University of Arizona Nutrition Research</p>
+        </div>
+
+        <div class="pdf-section">
+            <!-- PDF Embed with fallback -->
+            <iframe src="https://emailarizona-my.sharepoint.com/personal/kceus_arizona_edu/_layouts/15/embed.aspx?UniqueId=b4c6f548-11da-479f-9871-99410e9817c8" width="840" height="660" frameborder="0" scrolling="no" allowfullscreen title="Power of Pulses Recipe Book "></iframe>
+            
+            <div class="button-group">
+                   <a href="https://emailarizona-my.sharepoint.com/:b:/g/personal/kceus_arizona_edu/EUj1xrTaEZ9HmHGZQQ6YF8gB9lu6Q6dNP6B_rHYkEubFgw?download=1" 
+       class="btn btn-primary" 
+       download="Power_of_Pulses_Recipe_Book.pdf">
+                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                    Download PDF
+                </a>
+                
+                <a href="https://emailarizona-my.sharepoint.com/:b:/g/personal/kceus_arizona_edu/EUj1xrTaEZ9HmHGZQQ6YF8gB9lu6Q6dNP6B_rHYkEubFgw?e=rshqBb" class="btn btn-secondary" target="_blank">
+                    <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg>
+                    View Online
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>University of Arizona</p>
+        </div>
+    </div>
+
+    <script>
+        // PDF download functionality
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Replace 'your-document.pdf' with the actual PDF file path
+            const pdfUrl = 'your-document.pdf';
+            
+            // Create a temporary link element for download
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'document.pdf'; // You can customize the download filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show feedback to user
+            const btn = e.target.closest('.btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<svg class="icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Downloaded!';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        });
+
+        // Email sharing functionality
+        document.getElementById('shareBtn').addEventListener('click', function() {
+            const subject = encodeURIComponent('Shared Document from University of Arizona');
+            const body = encodeURIComponent('I wanted to share this document with you. You can access it at: ' + window.location.href);
+            
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (e.target.classList.contains('btn')) {
+                    e.preventDefault();
+                    e.target.click();
+                }
+            }
+        });
+    </script>
+    </div>
+    </div>
+    </div>
 <div class="week-content" id="week-wheel" style="display: none;">
     <title>Pulse Recipe Wheel</title>
     <style>
