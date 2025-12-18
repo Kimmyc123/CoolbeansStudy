@@ -1,254 +1,10 @@
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Pulses Study Website</title>  
-    <style> 
-     /* Mobile-first responsive design */
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: url('https://i.imgur.com/9Lqlf2a.png') no-repeat center center fixed;
-            background-size: cover;
-            line-height: 1.6;
-        }
-        
-        .nav {
-            background: #e7d3c7;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .nav li {
-            margin: 0;
-        }
-        
-        .nav a {
-            text-decoration: none;
-            color: #333;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: block;
-            font-size: 1rem;
-        }
-        
-        .nav a:hover {
-            background-color: rgba(255,255,255,0.3);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-            width: 100%;
-        }
-        
-        .content-section {
-            background: rgba(255, 255, 255, 0.95);
-            margin: 2rem 0;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .hero-section {
-            text-align: center;
-            padding: 3rem 1rem;
-            background: rgba(231, 211, 199, 0.9);
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-        
-        .hero-section h1 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-            color: #333;
-        }
-        
-        .hero-section p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .study-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .study-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .study-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-        
-        .study-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-        
-        .study-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #666;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: #e7d3c7;
-            color: #333;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            margin: 0.5rem 0;
-        }
-        
-        .btn:hover {
-            background: #d4c0b1;
-            transform: translateY(-2px);
-        }
-        
-        .image-container {
-            text-align: center;
-            margin: 2rem 0;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-        
-        .sidebar {
-            background: rgba(255,255,255,0.9);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .footer {
-            background: #e7d3c7;
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        
-        /* Tablet styles */
-        @media (min-width: 768px) {
-            .nav ul {
-                justify-content: flex-start;
-            }
-            
-            .container {
-                padding: 2rem;
-            }
-            
-            .two-column {
-                grid-template-columns: 2fr 1fr;
-            }
-            
-            .hero-section {
-                padding: 4rem 2rem;
-            }
-        }
-        
-        /* Desktop styles */
-        @media (min-width: 1024px) {
-            .nav {
-                padding: 1rem 2rem;
-            }
-            
-            .study-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
-            
-            .hero-section {
-                padding: 5rem 2rem;
-            }
-        }
-        
-        /* Large desktop styles */
-        @media (min-width: 1200px) {
-            .container {
-                padding: 2rem 3rem;
-            }
-        }
-        
-        /* Mobile-specific adjustments */
-        @media (max-width: 767px) {
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav li {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .content-section {
-                padding: 1.5rem;
-                margin: 1rem 0;
-            }
-            
-            .study-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .hero-section {
-                padding: 2rem 1rem;
-                margin: 1rem 0;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
-                margin: 0.5rem 0;
-            }
-        } 
+    <meta charset="UTF-8">  
+    <title>Pulses Study Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <style>  
         body {
             min-height: 100vh;
             margin: 0;
@@ -443,103 +199,22 @@
         .sidebar a:hover {
             background: #d4b49e;
         }
+         body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://i.imgur.com/9Lqlf2a.png') no-repeat center center fixed;
+            background-size: cover;
+}  
+        .nav {  
+            background: #e7d3c2;  
+            padding: 20px 0;  
+            text-align: center;  
+        }  
+        .nav a {  
+            color: #7c5c3e;  
         
         /* Removed media query that was hiding the hamburger menu */
-        
-        /* Mobile Responsive Styles */
-        @media screen and (max-width: 768px) {
-            .container {
-                margin: 20px 10px;
-                padding: 20px;
-            }
-            
-            .nav a {
-                margin: 0 10px;
-                font-size: 16px;
-            }
-            
-            .images-row {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            
-            .image-placeholder {
-                width: calc(50% - 5px);
-                min-width: 120px;
-            }
-            
-            .slides-placeholder {
-                padding: 20px;
-                font-size: 18px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-            
-            .nav {
-                padding: 15px 0;
-            }
-            
-            .nav a {
-                margin: 0 8px;
-                font-size: 14px;
-            }
-            
-            .image-placeholder {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-
-        /* Touch device improvements */
-        @media (hover: none) {
-            .nav a, .image-placeholder {
-                padding: 12px 8px;
-            }
-        }
-        @media screen and (max-width: 768px) {  
-    .container {  
-        margin: 20px 10px;  
-        padding: 20px;  
-    }  
-    .nav a {  
-        margin: 0 10px;  
-        font-size: 16px;  
-    }  
-    .images-row {  
-        flex-wrap: wrap;  
-        gap: 10px;  
-    }  
-    .image-placeholder {  
-        width: calc(50% - 5px);  
-        min-width: 120px;  
-    }  
-    .slides-placeholder {  
-        padding: 20px;  
-        font-size: 18px;  
-    }  
-}  
-@media screen and (max-width: 480px) {  
-    .container {  
-        margin: 10px;  
-        padding: 15px;  
-    }  
-    .nav {  
-        padding: 15px 0;  
-    }  
-    .nav a {  
-        margin: 0 8px;  
-        font-size: 14px;  
-    }  
-    .image-placeholder {  
-        width: 100%;  
-        margin-bottom: 10px;  
-    }  
-}  
         </style>  
 </head>  
 <body>  
@@ -591,12 +266,6 @@
         background: #003366;  
         color: white;  
     }  
-
-    .nav {  
-    position: sticky;  
-    top: 0;  
-    z-index: 1000;  
-}  
 
     .about-link {  
         background: #CC0033 !important;  
@@ -688,8 +357,7 @@
         <a href="#" class="nav-link" data-week="4">Week 4: Chickpeas</a>  
         <a href="#" class="nav-link" data-week="5">Week 5: Red Lentils</a>  
         <a href="#" class="nav-link" data-week="6">Week 6: Kidney Beans</a>  
-        <a href="#" class="nav-link" data-week="researchers">About the Researchers</a>
-        <a class="nav-link" data-week="featured" onclick="showWeek('featured')">Featured Recipes</a>  
+        <a href="#" class="nav-link" data-week="researchers">About the Researchers</a>   
     </div>  
      <!-- Hamburger Menu Button -->
     <div class="hamburger-menu">
@@ -704,10 +372,7 @@
         <a href="#" class="nav-link" data-week="8">Week 8: Pigeon Peas</a>
         <a href="#" class="nav-link" data-week="9">Week 9: Pinto Beans</a>
         <a href="#" class="nav-link" data-week="recipes">MyPlate Recipes</a>
-        <a href="#" class="nav-link" data-week="wheel">Recipe Generator</a>
         <a href="#" class="nav-link" data-week="learnmore">Learn More</a>
-        <a href="#" class="nav-link" data-week="book">Download Cook Book</a>
-        <a href="#" class="nav-link" data-week="faq">FAQ</a>
     </div>
 </div> 
 
@@ -715,758 +380,6 @@
 
 
     <!-- Week Content Sections -->  
-     <div class="week-content" id="week-featured">   
-        <div class="container"> 
-       <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Participants - Recipe Tab</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #001f5c 0%, #8B0000 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .header h1 {
-            color: #8B0000;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .header p {
-            color: #001f5c;
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .carousel-wrapper {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .participant-card {
-            min-width: 100%;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .participant-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #8B0000, #001f5c);
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .participant-photo::after {
-            content: '👤';
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .content-display {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .recipe-image {
-            width: 300px;
-            height: 250px;
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-            border-radius: 15px;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .recipe-image::before {
-            content: '🍽️';
-            font-size: 4rem;
-            opacity: 0.6;
-        }
-
-        .recipe-content {
-            text-align: left;
-            display: none;
-        }
-
-        .recipe-content.active {
-            display: block;
-        }
-
-        .recipe-title {
-            color: #8B0000;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .recipe-section {
-            margin-bottom: 30px;
-        }
-
-        .recipe-section h3 {
-            color: #001f5c;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #8B0000;
-            padding-bottom: 5px;
-        }
-
-        .ingredients-list, .instructions-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .ingredients-list li {
-            background: #f8f9fa;
-            padding: 8px 15px;
-            margin: 5px 0;
-            border-left: 4px solid #8B0000;
-            border-radius: 5px;
-        }
-
-        .instructions-list li {
-            background: #f8f9fa;
-            padding: 12px 15px;
-            margin: 10px 0;
-            border-left: 4px solid #001f5c;
-            border-radius: 5px;
-            position: relative;
-        }
-
-        .instructions-list li::before {
-            content: counter(step-counter);
-            counter-increment: step-counter;
-            position: absolute;
-            left: -12px;
-            top: 12px;
-            background: #001f5c;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .instructions-list {
-            counter-reset: step-counter;
-        }
-
-        .nutrition-facts {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 20px auto;
-            max-width: 500px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        .nutrition-facts.active {
-            display: block;
-        }
-
-        .nutrition-title {
-            color: #8B0000;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #001f5c;
-            padding-bottom: 10px;
-        }
-
-        .nutrition-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .nutrition-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 12px;
-            background: white;
-            border-radius: 8px;
-            border-left: 3px solid #8B0000;
-        }
-
-        .allergen-section {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px dashed #001f5c;
-        }
-
-        .allergen-section h4 {
-            color: #001f5c;
-            margin-bottom: 10px;
-        }
-
-        .allergen-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .allergen-tag {
-            background: #8B0000;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .content-nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .content-nav-btn {
-            background: transparent;
-            border: 2px solid #001f5c;
-            color: #001f5c;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        .content-nav-btn.active,
-        .content-nav-btn:hover {
-            background: #001f5c;
-            color: white;
-        }
-
-        .carousel-nav {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .nav-btn {
-            background: #8B0000;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            margin: 0 10px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
-        }
-
-        .nav-btn:hover {
-            background: #001f5c;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 31, 92, 0.4);
-        }
-
-        .nav-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .slide-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: #8B0000;
-            transform: scale(1.3);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .participant-card {
-                padding: 20px;
-            }
-
-            .recipe-image {
-                width: 250px;
-                height: 200px;
-            }
-
-            .nutrition-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Featured Participants' Recipes</h1>
-            <p>Discover amazing recipes from our community</p>
-        </div>
-        </div>
-
-        <div class="carousel-container">
-            <div class="carousel-wrapper" id="carouselWrapper">
-                <!-- Participant 1 -->
-                <div class="participant-card">
-                    <h2 class="recipe-title blue-title">Sourdough Pulse Rolls</h2> 
-                     <div class="image-gallery">  
-    <img src="https://i.imgur.com/dw0ubUc.jpeg"   
-         style="max-width: 600px; /* adjust this value as needed */  
-                display: block;  
-                margin: 0 auto;">  
-</div>  
-                    
-                    <div class="content-display">
-                        <!-- Recipe Image (Always visible initially) -->
-                        <div id="image-0" class=></div>
-                        
-                        <!-- Recipe Content -->
-                        <div id="recipe-0" class="recipe-content">
-                            <h2 class="recipe-title blue-title">Sourdough Pulse Rolls</h2>  
-                            
-                            <div class="recipe-section">
-                                <h3>Ingredients</h3>
-                                <ul class="ingredients-list">
-                                    <li>Sourdough Starter (I usually use about a cup)</li>
-                                    <li>7 cups of flour (does not really matter, as long as it suitable for bread)</li>
-                                    <li>Water as needed (about 5-6 cups)</li>
-                                    <li>2 cups of pulses</li>
-                                    <li>Extra flour to adjust dough consistency</li>
-                                </ul>
-                            </div>
-
-                            <div class="recipe-section">
-                                <h3>Instructions</h3>
-                                <ol class="instructions-list">  
-                                    <li>Prepare the sourdough by mixing the starter and the flour and water. I like to expand over 3 days, by adding 1 cup of flour on day 1, 2 cups on day 2, and 3 cups on day 3 and slowly increasing thickness of the dough.</li>  
-                                    <li>Save about one cup of the dough on Day 3 as starter for the next batch (you can freeze it, in the fridge it is good for about 2 weeks).</li>  
-                                    <li>On Day 4: finish the dough adding flour to get a stiff, non-tacky consistency, form it into the desired shape, let it rest for 1-2 hours at room temperature.</li>  
-                                    <li>Bake for 30-45 minutes at 450 degrees.</li>  
-                                </ol>  
-                            </div>
-                                <div class="image-gallery">  
-    <img src="https://i.imgur.com/1FD8L21.png"   
-         style="max-width: 600px; /* adjust this value as needed */  
-                display: block;  
-                margin: 0 auto;">  
-                        </div>
-                        </div>
-                        
-                        <!-- Nutrition Facts -->
-                        <div id="nutrition-0" class="nutrition-facts">
-                            <h3 class="nutrition-title">Nutrition Facts</h3>
-                            <div class="nutrition-grid">
-                                <div class="nutrition-item">
-                                    <span>Calories</span>
-                                    <span>344</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Protein</span>
-                                    <span>11.6g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Carbs</span>
-                                    <span>70.1g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Fat</span>
-                                    <span>1.1g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Fiber</span>
-                                    <span>5.3g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Sodium</span>
-                                    <span>83mg</span>
-                                </div>
-                            </div>
-                            
-                            <div class="allergen-section">
-                                <h4>Contains Allergens:</h4>
-                                <div class="allergen-tags">
-                                    <span class="allergen-tag"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="content-nav">
-                        <button class="content-nav-btn active" onclick="showContent(0, 'image')">Photo</button>
-                        <button class="content-nav-btn" onclick="showContent(0, 'recipe')">Recipe</button>
-                        <button class="content-nav-btn" onclick="showContent(0, 'nutrition')">Nutrition</button>
-                    </div>
-                </div>
-                
-
-                <!-- Participant 2 -->
-                <div class="participant-card">
-                   <h2 class="recipe-title blue-title">Spicy Black Bean Tacos</h2> 
-                     <div class="image-gallery">  
-    <img src="https://i0.wp.com/s.lightorangebean.com/media/20240914145357/veggie-bean-tacos_done.png?fit=1376%2C864&quality=80&ssl=1"   
-         style="max-width: 600px; /* adjust this value as needed */  
-                display: block;  
-                margin: 0 auto;">  
-</div>  
-                    
-                    <div class="content-display">
-                        <!-- Recipe Image -->
-                        <div id="image-1" class=></div>
-                        
-                        <!-- Recipe Content -->
-                        <div id="recipe-1" class="recipe-content">
-                            <h2 class="recipe-title">Spicy Black Bean Tacos</h2>
-                            
-                            <div class="recipe-section">
-                                <h3>Ingredients</h3>
-                                <ul class="ingredients-list">
-                                    <li>2 cans black beans, drained and rinsed</li>
-                                    <li>8 corn tortillas</li>
-                                    <li>1 avocado, sliced</li>
-                                    <li>1 cup shredded cabbage</li>
-                                    <li>1/2 cup cilantro, chopped</li>
-                                    <li>1 lime, cut into wedges</li>
-                                    <li>1 tsp cumin</li>
-                                    <li>1 tsp chili powder</li>
-                                    <li>Hot sauce to taste</li>
-                                </ul>
-                            </div>
-
-                            <div class="recipe-section">
-                                <h3>Instructions</h3>
-                                <ol class="instructions-list">
-                                    <li>Heat black beans with cumin and chili powder in a pan.</li>
-                                    <li>Warm tortillas in a dry skillet or microwave.</li>
-                                    <li>Mash half the beans for texture, leave others whole.</li>
-                                    <li>Fill tortillas with bean mixture.</li>
-                                    <li>Top with avocado, cabbage, cilantro, and hot sauce.</li>
-                                    <li>Serve with lime wedges.</li>
-                                </ol>
-                            </div>
-                        </div>
-                        
-                        <!-- Nutrition Facts -->
-                        <div id="nutrition-1" class="nutrition-facts">
-                            <h3 class="nutrition-title">Nutrition Facts</h3>
-                            <div class="nutrition-grid">
-                                <div class="nutrition-item">
-                                    <span>Calories</span>
-                                    <span>285</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Protein</span>
-                                    <span>11g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Carbs</span>
-                                    <span>52g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Fat</span>
-                                    <span>8g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Fiber</span>
-                                    <span>15g</span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Sodium</span>
-                                    <span>420mg</span>
-                                </div>
-                            </div>
-                            
-                            <div class="allergen-section">
-                                <h4>Contains Allergens:</h4>
-                                <div class="allergen-tags">
-                                    <span class="allergen-tag">None</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="content-nav">
-                        <button class="content-nav-btn active" onclick="showContent(1, 'image')">Photo</button>
-                        <button class="content-nav-btn" onclick="showContent(1, 'recipe')">Recipe</button>
-                        <button class="content-nav-btn" onclick="showContent(1, 'nutrition')">Nutrition</button>
-                    </div>
-                </div>
-
-                <!-- Participant 3 -->
-                <div class="participant-card">
-                    
-                    
-                    <div class="content-display">
-                        <!-- Recipe Image -->
-                        <div id="image-2" class="recipe-image"></div>
-                        
-                        <!-- Recipe Content -->
-                        <div id="recipe-2" class="recipe-content">
-                            <h2 class="recipe-title">Under Construction- Check Back Later!</h2>
-                            
-                            <div class="recipe-section">
-                                <h3>Ingredients</h3>
-                                <ul class="ingredients-list">
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-
-                            <div class="recipe-section">
-                                <h3>Instructions</h3>
-                                <ol class="instructions-list">
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ol>
-                            </div>
-                        </div>
-                        
-                        <!-- Nutrition Facts -->
-                        <div id="nutrition-2" class="nutrition-facts">
-                            <h3 class="nutrition-title">Nutrition Facts</h3>
-                            <div class="nutrition-grid">
-                                <div class="nutrition-item">
-                                    <span>Calories</span>
-                                    <span></span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Protein</span>
-                                    <span></span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Carbs</span>
-                                    <span></span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Fat</span>
-                                    <span></span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Fiber</span>
-                                    <span></span>
-                                </div>
-                                <div class="nutrition-item">
-                                    <span>Sodium</span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            
-                            <div class="allergen-section">
-                                <h4>Contains Allergens:</h4>
-                                <div class="allergen-tags">
-                                    <span class="allergen-tag"></span>
-                                    <span class="allergen-tag"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="content-nav">
-                        <button class="content-nav-btn active" onclick="showContent(2, 'image')">Photo</button>
-                        <button class="content-nav-btn" onclick="showContent(2, 'recipe')">Recipe</button>
-                        <button class="content-nav-btn" onclick="showContent(2, 'nutrition')">Nutrition</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide-indicators">
-            <div class="indicator active" onclick="goToSlide(0)"></div>
-            <div class="indicator" onclick="goToSlide(1)"></div>
-            <div class="indicator" onclick="goToSlide(2)"></div>
-        </div>
-
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn" onclick="previousSlide()">← Previous</button>
-            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
-        </div>
-    </div>
-
-    <script>
-        let currentSlide = 0;
-        const totalSlides = 3;
-
-        function updateCarousel() {
-            const wrapper = document.getElementById('carouselWrapper');
-            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update indicators
-            const indicators = document.querySelectorAll('.indicator');
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-            
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
-        }
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
-        }
-
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateCarousel();
-            }
-        }
-
-        function previousSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-            }
-        }
-
-        function showContent(participantIndex, contentType) {
-            // Hide all content for this participant
-            document.getElementById(`image-${participantIndex}`).style.display = 'none';
-            document.getElementById(`recipe-${participantIndex}`).classList.remove('active');
-            document.getElementById(`nutrition-${participantIndex}`).classList.remove('active');
-            
-            // Show selected content
-            if (contentType === 'image') {
-                document.getElementById(`image-${participantIndex}`).style.display = 'flex';
-            } else if (contentType === 'recipe') {
-                document.getElementById(`recipe-${participantIndex}`).classList.add('active');
-            } else if (contentType === 'nutrition') {
-                document.getElementById(`nutrition-${participantIndex}`).classList.add('active');
-            }
-            
-            // Update navigation buttons for this participant
-            const participantCards = document.querySelectorAll('.participant-card');
-            const navButtons = participantCards[participantIndex].querySelectorAll('.content-nav-btn');
-            navButtons.forEach((btn, index) => {
-                btn.classList.remove('active');
-                if ((index === 0 && contentType === 'image') ||
-                    (index === 1 && contentType === 'recipe') ||
-                    (index === 2 && contentType === 'nutrition')) {
-                    btn.classList.add('active');
-                }
-            });
-        }
-
-        // Initialize carousel
-        updateCarousel();
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') {
-                previousSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-            }
-        });
-
-        // Add touch/swipe support for mobile
-        let startX = 0;
-        let endX = 0;
-
-        document.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-        });
-
-        document.addEventListener('touchend', function(e) {
-            endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > 50) { // Minimum swipe distance
-                if (diffX > 0) {
-                    nextSlide();
-                } else {
-                    previousSlide();
-                }
-            }
-        });
-    </script>
-</body>     
-    </div>
-    </div>
-    </div>
-    </div>
     <div class="week-content" id="week-1" style="display: none;">  
         <div class="container">  
 
@@ -2419,10 +1332,6 @@
     <div style="display: flex; justify-content: center;">  
     <h2 class="week-title">Week 7: Black Eyed Peas</h2>  
 </div> 
-      <!-- Embedded PowerPoint presentation -->  
-    <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vShTaATX5jTql20Ar0j3nZBhn8ZJX1jo86d17HIXsRJ42VuwgInSmxUxRIfHonWK-kHYsMjXpoAhdqY/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-</div>  
         <div class="image-gallery">
             <div class="image-holder">
                 <img src="https://i.imgur.com/49gSYTv.jpeg"> 
@@ -2535,10 +1444,6 @@
       <div style="display: flex; justify-content: center;">  
     <h2 class="week-title">Week 8: Pigeon Peas</h2>  
 </div>  
-  <!-- Embedded PowerPoint presentation -->  
-    <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRpfCRvQzqJ0r9MGXeLwrr1xJOu1RLOXhlPQOxN75ImM8UPNcFzlgoWySxA9XKZW-GhniGSBDlBMjhp/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-</div>  
         <div class="image-gallery">
             <div class="image-holder">
                 <img src="https://i.imgur.com/gzmXupJ.jpeg"> 
@@ -2648,10 +1553,6 @@
     <div class="container">
         <div style="display: flex; justify-content: center;">  
     <h2 class="week-title">Week 9: Pinto Beans</h2>  
-</div>  
- <!-- Embedded PowerPoint presentation -->  
-    <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTewK6IdwPCuP0B613ES-WXYTsB0RW9lmISSqgLi-S5GRMquAzHk1dIqNoj7XCPVWi7xFBQO46Gmz2k/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>  
       <div class="image-gallery">
             <div class="image-holder">
@@ -3708,200 +2609,15 @@
         </div>
         </div>
         </div>
-<!-- Add this CSS for the carousel functionality -->
-<style>
-   /* Image Carousel Styles - Updated for full size */
-    .image-holder {
-        width: 400px;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-        overflow: hidden;
-        margin-bottom: 20px;
-        position: relative;
-    }
-    
-    .image-holder:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-    
-    .carousel-container {
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .carousel-slide {
-        width: 100%;
-        display: none;
-    }
-    
-    .carousel-slide.active {
-        display: block;
-    }
-    
-    .carousel-slide img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: contain;
-    }
-    
-    .carousel-nav {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 10;
-    }
-    
-    .carousel-arrow {
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 20px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .image-holder:hover .carousel-arrow {
-        opacity: 0.8;
-    }
-    
-    .carousel-arrow:hover {
-        opacity: 1 !important;
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-    
-    .carousel-prev {
-        margin-left: 10px;
-    }
-    
-    .carousel-next {
-        margin-right: 10px;
-    }
-    
-    .carousel-indicator {
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        gap: 5px;
-        z-index: 10;
-    }
-    
-    .carousel-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        cursor: pointer;
-    }
-    
-    .carousel-dot.active {
-        background: white;
-    }
-    
-    /* Image gallery layout */
-    .image-gallery {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        padding: 20px;
-        flex-wrap: wrap;
-    }
-    
-    /* Accessibility */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
-    
-    /* Hamburger menu styles */
-    .hamburger-menu {
-        display: block;
-        cursor: pointer;
-        padding: 10px;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 1000;
-        background: #FFFFFF;
-        border-radius: 5px;
-    }
-    
-    .hamburger-menu span {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background-color: #7c5c3e;
-        margin: 5px 0;
-        transition: 0.4s;
-    }
-    
-    .sidebar {
-        position: fixed;
-        left: -250px;
-        top: 0;
-        width: 250px;
-        height: 100%;
-        background: #e7d3c2;
-        transition: 0.4s;
-        padding-top: 60px;
-        z-index: 999;
-    }
-    
-    .sidebar.active {
-        left: 0;
-    }
-    
-    .sidebar a {
-        display: block;
-        padding: 15px 25px;
-        color: #7c5c3e;
-        text-decoration: none;
-        font-size: 18px;
-    }
-    
-    .sidebar a:hover {
-        background: #d4b49e;
-    }
-</style>
-
 <!-- Updated MyPlate Recipes section with carousel functionality -->
 <div class="week-content" id="week-recipes" style="display: none;">
     <div class="container">
         <div style="display: flex; justify-content: center;">  
-            <h2 class="week-title">MyPlate Recipes</h2>  
-        </div>  
+    <h2 class="week-title">MyPlate Recipes</h2>  
+</div>  
         <div class="image-gallery">
             <!-- Carousel 1 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Asian Slaw</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="1">
                     <div class="carousel-slide active">
                         <img src="https://www.feastingathome.com/wp-content/uploads/2018/09/asian-slaw-100-4.jpg" alt="Pulse Recipe 1">
@@ -3915,6 +2631,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/4UxzypR.jpeg" alt="Pulse Recipe 1 Plated">
                     </div>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Asian Slaw</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -3925,7 +2644,6 @@
                     </div>
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
-                        <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
                     </div>
@@ -3934,9 +2652,6 @@
             
             <!-- Carousel 2 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Carrot Top Pesto</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="2">
                     <div class="carousel-slide active">
                         <img src="https://minimalistbaker.com/wp-content/uploads/2023/02/Carrot-Top-Pesto-6.jpg">
@@ -3944,6 +2659,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/kQnZu8b.jpeg" alt="Pulse Recipe 2 Variation">
                     </div>
+                    <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Carrot Top Pesto</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -3954,6 +2672,7 @@
                     </div>
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
+                        <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
                     </div>
                 </div>
@@ -3961,9 +2680,6 @@
             
             <!-- Carousel 3 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Simple Salad Dressing</h2>  
-                </div>
                 <div class="carousel-container" data-carousel="3">
                     <div class="carousel-slide active">
                         <img src="https://flavorthemoments.com/wp-content/uploads/2018/05/easy-greek-salad-dressing-2-flavorthemoments-600x875.jpg" alt="Pulse Recipe 3">
@@ -3971,6 +2687,7 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/c9tZPDn.jpeg" alt="Pulse Recipe 3 Variation">
                     </div>
+                    <h2 class="week-title">Simple Salad Dressing</h2>
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -3982,15 +2699,13 @@
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
                     </div>
                 </div>
             </div>
             
             <!-- Carousel 4 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Simple Frittatas</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="4">
                     <div class="carousel-slide active">
                         <img src="https://sallysbakingaddiction.com/wp-content/uploads/2023/05/frittatas.jpg" alt="Pulse Recipe 4">
@@ -4001,6 +2716,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/zAXR0qA.png" alt="Pulse Recipe 4 Plated">
                     </div>
+                       <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Simple Frittatas</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -4019,9 +2737,6 @@
             
             <!-- Carousel 5 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Broccomole</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="5">
                     <div class="carousel-slide active">
                         <img src="https://i.imgur.com/W4JWvg2.jpeg" alt="Pulse Recipe 5">
@@ -4032,12 +2747,15 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/Jx00CIj.png" alt="Pulse Recipe 5 Plated">
                     </div>
-                    <div class="carousel-slide">
+                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/In8hUYW.png" alt="Pulse Recipe 5 Plated">
                     </div>
-                    <div class="carousel-slide">
+                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/yjB1xop.png" alt="Pulse Recipe 5 Plated">
                     </div>
+                    <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Broccomole</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -4050,17 +2768,11 @@
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
                     </div>
                 </div>
             </div>
-
             <!-- Carousel 6 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Luna's Chia Breakfast Bowl</h2>  
-                </div>
                 <div class="carousel-container" data-carousel="6">
                     <div class="carousel-slide active">
                         <img src="https://wholefoodsoulfoodkitchen.com/wp-content/uploads/2023/02/chia-pudding-with-yogurt-2.jpg" alt="Pulse Recipe 6">
@@ -4071,6 +2783,7 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/KvPzr0a.png" alt="Pulse Recipe 6 Plated">
                     </div>
+                     <h2 class="week-title">Luna’s Chia Breakfast Bowl</h2>
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -4086,12 +2799,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Carousel 7 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Eggless Beet Pasta</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="7">
                     <div class="carousel-slide active">
                         <img src="https://sweetsimplevegan.com/wp-content/uploads/2024/07/Vegan-Beet-Pasta-Sauce-recipe-sweet-simple-vegan-2.jpg" alt="Pulse Recipe 6">
@@ -4099,6 +2808,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/SMvxtrg.png" alt="Pulse Recipe 7 Variation">
                     </div>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Eggless Beet Pasta</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -4110,15 +2822,12 @@
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
                     </div>
                 </div>
             </div>
-
-            <!-- Carousel 8 -->
+              <!-- Carousel 8 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Kale Chips</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="8">
                     <div class="carousel-slide active">
                         <img src="https://minimalistbaker.com/wp-content/uploads/2015/07/VEGAN-CHEESY-Kale-Chips-So-simple-8-ingredients-30-minutes-DELICIOUS-vegan-glutenfree-recipe-snack-kale-healthy-minimalistbaker.jpg" alt="Pulse Recipe 8">
@@ -4126,9 +2835,12 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/3Khkd1q.png" alt="Pulse Recipe 8 Variation">
                     </div>
-                    <div class="carousel-slide">
-                        <img src="https://i.imgur.com/lbLFCJt.png" alt="Pulse Recipe 8 Variation">
+                     <div class="carousel-slide">
+                     <img src="https://i.imgur.com/lbLFCJt.png" alt="Pulse Recipe 8 Variation">
                     </div>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Kale Chips</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -4144,12 +2856,8 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Carousel 9 -->
+             <!-- Carousel 9 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Curtido</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="9">
                     <div class="carousel-slide active">
                         <img src="https://www.simplyrecipes.com/thmb/ylX_-8CnwANV-DYzmaSdqNNyrVU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Curtido-LEAD-7-f1949949cbdc4bad88fb06e83bfc8b37.jpg" alt="Pulse Recipe 9">
@@ -4157,6 +2865,9 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/4NG0sHr.png" alt="Pulse Recipe 9 Variation">
                     </div>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Curtido</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -4168,15 +2879,12 @@
                     <div class="carousel-indicator" aria-hidden="true">
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel 10 -->
+                        <div class="carousel-dot"></div>
+        </div>
+    </div>
+</div>
+  <!-- Carousel 10 -->
             <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Pupusas</h2>  
-                </div>  
                 <div class="carousel-container" data-carousel="10">
                     <div class="carousel-slide active">
                         <img src="https://www.simplyrecipes.com/thmb/FxM70WUalkiC12O2jbX3gh2jGH8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Pupusas-LEAD-1-d916697aff0b4a08857fd8e4393756cd.jpg" alt="Pulse Recipe 10">
@@ -4184,9 +2892,12 @@
                     <div class="carousel-slide">
                         <img src="https://i.imgur.com/VG9Geef.png" alt="Pulse Recipe 10 Variation">
                     </div>
-                    <div class="carousel-slide">
-                        <img src="https://i.imgur.com/WGtYza1.png" alt="Pulse Recipe 10 Variation">
+                     <div class="carousel-slide">
+                     <img src="https://i.imgur.com/WGtYza1.png" alt="Pulse Recipe 10 Variation">
                     </div>
+                     <div style="display: flex; justify-content: center;">  
+    <h2 class="week-title">Pupusas</h2>  
+</div>  
                     <div class="carousel-nav">
                         <button class="carousel-arrow carousel-prev" aria-label="Previous image">
                             &lt;
@@ -4199,141 +2910,6 @@
                         <div class="carousel-dot active"></div>
                         <div class="carousel-dot"></div>
                         <div class="carousel-dot"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel 11 -->
-            <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Eggplant Almond Enchiladas</h2>  
-                </div>  
-                <div class="carousel-container" data-carousel="11">
-                    <div class="carousel-slide active">
-                        <img src="https://www.vodkaandbiscuits.com/wp-content/uploads/2017/03/Eggplant-Almond-Enchiladas.jpg" alt="Pulse Recipe 11">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://i.imgur.com/WuxiQWF.png" alt="Pulse Recipe 11 Variation">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://i.imgur.com/hI2iuCO.png" alt="Pulse Recipe 11 Variation">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://i.imgur.com/vkx5Qf3.png" alt="Pulse Recipe 11 Variation">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://i.imgur.com/1rOYRY8.png" alt="Pulse Recipe 11 Variation">
-                    </div>
-                    <div class="carousel-nav">
-                        <button class="carousel-arrow carousel-prev" aria-label="Previous image">
-                            &lt;
-                        </button>
-                        <button class="carousel-arrow carousel-next" aria-label="Next image">
-                            &gt;
-                        </button>
-                    </div>
-                    <div class="carousel-indicator" aria-hidden="true">
-                        <div class="carousel-dot active"></div>
-                        <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel 12 -->
-            <div class="image-holder">
-                <div style="display: flex; justify-content: center;">  
-                    <h2 class="week-title">Cowboy Caviar</h2>  
-                </div>  
-                <div class="carousel-container" data-carousel="12">
-                    <div class="carousel-slide active">
-                        <img src="https://carlsbadcravings.com/wp-content/uploads/2023/05/Cowboy-Caviar-Texas-Caviar-7c.jpg" alt="Pulse Recipe 10">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://i.imgur.com/B5kEhX2.png" alt="Pulse Recipe 12 Variation">
-                    </div>
-                    <div class="carousel-nav">
-                        <button class="carousel-arrow carousel-prev" aria-label="Previous image">
-                            &lt;
-                        </button>
-                        <button class="carousel-arrow carousel-next" aria-label="Next image">
-                            &gt;
-                        </button>
-                    </div>
-                    <div class="carousel-indicator" aria-hidden="true">
-                        <div class="carousel-dot active"></div>
-                        <div class="carousel-dot"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CRITICAL: Add this JavaScript at the end of your HTML file, before the closing </body> tag -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all carousels
-    const carousels = document.querySelectorAll('.carousel-container');
-    
-    carousels.forEach(carousel => {
-        let currentSlide = 0;
-        const slides = carousel.querySelectorAll('.carousel-slide');
-        const dots = carousel.querySelectorAll('.carousel-dot');
-        const prevBtn = carousel.querySelector('.carousel-prev');
-        const nextBtn = carousel.querySelector('.carousel-next');
-        
-        // Function to show a specific slide
-        function showSlide(index) {
-            // Remove active class from all slides and dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Add active class to current slide and dot
-            if (slides[index] && dots[index]) {
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-            }
-        }
-        
-        // Function to go to next slide
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        // Function to go to previous slide
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        // Add event listeners to navigation buttons
-        if (prevBtn && nextBtn) {
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-        }
-        
-        // Add event listeners to dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-        
-        // Optional: Auto-advance slides every 5 seconds
-        // Uncomment the lines below if you want automatic slideshow
-        /*
-        setInterval(() => {
-            nextSlide();
-        }, 5000);
-        */
-    });
-});
-</script>
         </div>
     </div>
 </div>
@@ -4434,14 +3010,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p style="font-size: 1rem; color: #7c5c3e;">Ken Wilund is the Director of the School of Nutritional Sciences and Wellness at the University of Arizona.  He has a BS in Nutritional Sciences and PhD in Exercise Physiology from the University of Maryland, and was a faculty member in the Department of Kinesiology and Division of Nutritional Sciences at the University of Illinois for 19 years prior to transitioning to his current position at the U of A in 2023.  His research is primarily focused research is focused on examining the effects of exercise training and nutritional factors on cardiovascular health and muscle wasting in in patients with kidney failure.</p>  
                 </div> 
                 <div style="flex: 1 1 250px; min-width: 220px; max-width: 300px; background: #f5e6da; border-radius: 10px; padding: 20px; text-align: center;">  
-                    <h3 style="color: #CC0033; margin: 10px 0 6px 0;">Geovana Martin Alemañy, PhD</h3>  
+                    <h3 style="color: #CC0033; margin: 10px 0 6px 0;">Dr. Martin</h3>  
                     <p style="font-weight: bold; color: #7c5c3e; margin: 0 0 10px 0;">Researcher</p>
                     <img src="https://media.licdn.com/dms/image/v2/D5603AQFaBGteoZLGPA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1671039311109?e=1751500800&v=beta&t=0YPVnOO8yrBwtouUVe4t-STodwvwvaVcUba3-pDwr-Y" alt="Nutritional Intervention 2" style="width: 150px; height: 150px; object-fit: cover; border: 8px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">    
-                    <p style="font-size: 1rem; color: #7c5c3e;">Geovana Martin Alemañy, PhD, is a renal nutritionist and a postdoctoral researcher at the School of Nutritional Sciences and Wellness at the University of Arizona. She holds both a Master’s and a Doctorate in Sciences from the National Autonomous University of Mexico (UNAM).
-
-She has extensive experience providing nutritional care to patients with chronic kidney disease (CKD). Her work includes developing exercise programs for hemodialysis patients and creating protocols for nutritional management in CKD.
-
-Geovana has published scientific research on the effects of intradialytic exercise and nutrition in patients undergoing hemodialysis.</p>  
+                    <p style="font-size: 1rem; color: #7c5c3e;"></p>  
                 </div> 
                 <!-- Researcher 3 -->  
                 <div style="flex: 1 1 250px; min-width: 220px; max-width: 300px; background: #f5e6da; border-radius: 10px; padding: 20px; text-align: center;">  
@@ -4455,16 +3027,14 @@ Geovana has published scientific research on the effects of intradialytic exerci
                     <h3 style="color: #CC0033; margin: 10px 0 6px 0;">Milad Hasankhani</h3>  
                     <p style="font-weight: bold; color: #7c5c3e; margin: 0 0 10px 0;">Researcher</p>  
                     <img src="data:image/jpeg;base64,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" alt="Nutritional Intervention 2" style="width: 150px; height: 150px; object-fit: cover; border: 8px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;" alt="Nutritional Intervention 2" style="width: 150px; height: 150px; object-fit: cover; border: 8px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;"> 
-                    <p style="font-size: 1rem; color: #7c5c3e;">Milad holds a BSc in Nutritional Sciences and an MSc in Clinical Nutrition. He is currently pursuing a PhD in Nutritional Sciences to gain deeper knowledge and make original contributions to his field of interest. Driven by a strong desire to translate research findings into everyday practice, he is especially drawn to applied research. His primary curiosity lies in the interplay between nutrition and human physiology, with a particular focus on conditions like metabolic syndrome.</p>  
+                    <p style="font-size: 1rem; color: #7c5c3e;"></p>  
                 </div> 
                 <!-- Researcher 4 -->  
                 <div style="flex: 1 1 250px; min-width: 220px; max-width: 300px; background: #f5e6da; border-radius: 10px; padding: 20px; text-align: center;">  
-                    <h3 style="color: #CC0033; margin: 10px 0 6px 0;">Christopher Mills, MPH, RN, DTR, CSCS</h3>  
+                    <h3 style="color: #CC0033; margin: 10px 0 6px 0;">Christopher Mills</h3>  
                     <p style="font-weight: bold; color: #7c5c3e; margin: 0 0 10px 0;">Researcher</p>  
                     <img src="https://snsw.arizona.edu/sites/default/files/styles/az_medium/public/media/photos/CMills_Headshot_FNCE.jpg.webp?itok=ErRiahZw" alt="Nutritional Intervention 2" style="width: 150px; height: 150px; object-fit: cover; border: 8px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">
-                    <p style="font-size: 1rem; color: #7c5c3e;">Christopher Mills is an Assistant Professor of Practice in the School of Nutritional Sciences & Wellness at the University of Arizona, with expertise in education, nursing, nutrition, and public health. As a member of the Cool Beans research team, he contributes to participant health and safety through blood specimen collection and clinical support, including on-site assessment and intervention when needed. With a multidisciplinary background, Chris brings a passion for improving individual health outcomes and advancing research that informs real-world wellness strategies.
-
-</p>  
+                    <p style="font-size: 1rem; color: #7c5c3e;"></p>  
                 </div>
                 </div>
                  <div style="display: flex; justify-content: center;">  
@@ -4515,1334 +3085,8 @@ Geovana has published scientific research on the effects of intradialytic exerci
     onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.1)';"  
   >  
     Contact Us  
-  </a>
-  </div>  
-</div>
-</div>
-<div class="week-content" id="week-faq" style="display: none;">
-    <title>Pulses Clinical Trial - FAQ</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-          .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header h1 {
-            color:  #003366 60%, #CC0033 100%;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header p {
-            color: #666;
-            font-size: 1.2em;
-        }
-        
-        .faq-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        
-        .faq-item {
-            margin-bottom: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);
-        }
-        
-       .faq-question {  
-    background: linear-gradient(135deg, #003366 0%, #0066CC 100%);  
-    color: white;  
-    padding: 20px;  
-    cursor: pointer;  
-    font-weight: bold;  
-    font-size: 1.1em;  
-    display: flex;  
-    justify-content: space-between;  
-    align-items: center;  
-    transition: all 0.3s ease;  
-}  
-  
-.faq-question:hover {  
-    background: linear-gradient(135deg, #0066CC 0%, #003366 100%);  
-}  
-        
-        .faq-question .icon {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-answer {
-            padding: 20px;
-            background: #f9f9f9;
-            display: none;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .faq-answer.active {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .faq-item.active .faq-question .icon {
-            transform: rotate(180deg);
-        }
-        
-        .contact-section {
-            background: rgba(139, 69, 19, 0.1);
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .contact-section h3 {
-            color: #8B4513;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #8B4513;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #8B4513;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: 2px solid #8B4513;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .back-link:hover {
-            background: #8B4513;
-            color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .faq-question {
-                padding: 15px;
-                font-size: 1em;
-            }
-            
-            .faq-answer {
-                padding: 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🫘 Pulses Study FAQ</h1>
-            <p>Frequently Asked Questions About Our Research</p>
-        </div>
-        
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>When will the next cohort begin?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Recruitment begins following IRB approval and continues until 180 subjects are enrolled. The next cohort is expected to start within 2-3 months of current study completion.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Are previous participants able to participate again?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    No, previous participants are excluded to avoid carryover effects and maintain study integrity. Each participant can only take part in the study once.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How can participants spread word of future studies?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Participants can refer friends and family through word-of-mouth, share study flyers from Tucson Village Farms, or provide contact information to the research team for future recruitment. We appreciate your help in spreading awareness!
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Will participants receive individualized results of their lab work?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    No, participants will not receive their individual lab results (blood lipids, blood pressure, HbA1c).
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Where can participants access the general/full results of each study?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    General study results will be posted on the university research website and shared via email newsletter to all participants within 6 months of study completion.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How will participants' information be disposed of following the study's conclusion?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    All participant data will be securely destroyed 7 years after study completion per university policy. Participants can request immediate data deletion at any time.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Who is eligible to participate?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Participants must be aged 18-65, and free from major chronic diseases. Specific inclusion and exclusion criteria will be reviewed during the screening process.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What does participation involve?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Participation involves 6 bi-weekly cooking sessions (1 hr each with TVF), two visits (Baseline and Endpoint) to our research lab center (fasting blood draw & Questionaires), completing weekly food logs, and providing blood samples for lab analysis.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What are the potential risks?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Risks are minimal and primarily related to blood draws (slight discomfort, bruising). Some participants may experience caffeine-related effects like jitters or sleep disturbance. All risks will be thoroughly discussed during consent.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Can I withdraw from the study?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Yes, participation is completely voluntary and you can withdraw at any time without penalty. Your decision will not affect any future medical care or benefits.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How is participant privacy protected?</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    All data is de-identified and stored securely. Only authorized research staff have access to participant information. The study follows all HIPAA guidelines and university privacy policies.
-                </div>
-            </div>
-        </div>
-        
-        <div class="contact-section">
-            <h3>Have a Question Not Listed Here?</h3>
-            <p>Submit your question below and we'll get back to you within 24 hours.</p>
-            
-            <form class="contact-form" action="mailto:kceus@arizona.edu" method="post" enctype="text/plain" onsubmit="prepareEmail(event)">
-                <div class="form-group">
-                    <label for="name">Your Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="question">Your Question:</label>
-                    <textarea id="question" name="question" placeholder="Type your question here..." required></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">Submit Question</button>
-            </form>
-        </div>
-        
-        <div style="text-align: center;">
-            <a href="https://kimmyc123.github.io/CoolbeansStudy/" class="back-link">← Back to Study Information</a>
-        </div>
-    </div>
-    
-    <script>
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const faqAnswer = faqItem.querySelector('.faq-answer');
-            const isActive = faqItem.classList.contains('active');
-            
-            // Close all other FAQ items
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-                item.querySelector('.faq-answer').classList.remove('active');
-            });
-            
-            // Toggle current item
-            if (!isActive) {
-                faqItem.classList.add('active');
-                faqAnswer.classList.add('active');
-            }
-        }
-        
-        function prepareEmail(event) {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const question = document.getElementById('question').value;
-            
-            // Create email body
-            const emailBody = `Cool Beans Study Question%0D%0A%0D%0AFrom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AQuestion:%0D%0A${question}`;
-            
-            // Update form action with subject and body
-            const form = event.target;
-            form.action = `mailto:kceus@arizona.edu?subject=Cool Beans Study Question from ${name}&body=${emailBody}`;
-            
-            // Show confirmation message
-            setTimeout(() => {
-                alert(`Your email client should open with a pre-filled message to kceus@arizona.edu. If it doesn't open automatically, please copy the information and send it manually to: kceus@arizona.edu`);
-                // Reset form after a short delay
-                setTimeout(() => {
-                    document.querySelector('.contact-form').reset();
-                }, 1000);
-            }, 100);
-        }
-        
-        // Add smooth scrolling
-        document.addEventListener('DOMContentLoaded', function() {
-            // Auto-expand first FAQ item
-            const firstFAQ = document.querySelector('.faq-item');
-            if (firstFAQ) {
-                firstFAQ.classList.add('active');
-                firstFAQ.querySelector('.faq-answer').classList.add('active');
-            }
-        });
-    </script>  
+  </a>  
 </div>  
-</div>
-</div>
-<div class="week-content" id="week-book" style="display: none;">
-    <title>Pulse Recipe Wheel</title>
-   <style>
-   .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .header {
-            margin-bottom: 30px;
-        }
-
-        .logo-placeholder {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #AB0520, #003366);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-        }
-
-        h1 {
-            color: #AB0520;
-            font-size: 2em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-        }
-
-        .pdf-section {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 2px dashed #AB0520;
-        }
-
-        .pdf-icon {
-            width: 60px;
-            height: 60px;
-            background: #AB0520;
-            border-radius: 8px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .pdf-info {
-            margin-bottom: 20px;
-        }
-
-        .pdf-title {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .pdf-details {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            min-width: 140px;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background: #AB0520;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #8a0419;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(171, 5, 32, 0.3);
-        }
-
-        .btn-secondary {
-            background: #003366;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #002244;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
-        }
-
-        .btn:focus {
-            outline: 2px solid #AB0520;
-            outline-offset: 2px;
-        }
-
-        .icon {
-            width: 16px;
-            height: 16px;
-        }
-
-        .footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .button-group {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-            
-            h1 {
-                font-size: 1.5em;
-            }
-        }
-
-        /* Accessibility improvements */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
-</head>
-<body>
-     <div class="container">
-        <div class="header">
-            <div class="logo-placeholder">
-                UA
-            </div>
-            <h1>Power of Pulses Recipe Book</h1>
-            <p class="subtitle">University of Arizona Nutrition Research</p>
-        </div>
-
-        <div class="">
-            <!-- PDF Embed with fallback -->
-            <iframe   
-  src="https://docs.google.com/document/d/e/2PACX-1vTKTHASbagOxBLCUvYcl0-AkeCYHAoKrEa7HKCNgkHk4kz94nkeiYyeiPVF6n_BOzXS_d0y1QMKTgcK/pub?embedded=true"   
-  width="820"   
-  height="760"   
-  frameborder="0"   
-  scrolling="yes"   
-  allowfullscreen  
-  title="Google Doc Embed">  
-</iframe>  
-            
-            <div class="button-group">
-                   <a href="https://emailarizona-my.sharepoint.com/:b:/g/personal/kceus_arizona_edu/EUj1xrTaEZ9HmHGZQQ6YF8gB9lu6Q6dNP6B_rHYkEubFgw?download=1" 
-       class="btn btn-primary" 
-       download="Power_of_Pulses_Recipe_Book.pdf">
-                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                    Download PDF
-                </a>
-                
-                <a href="https://emailarizona-my.sharepoint.com/:b:/g/personal/kceus_arizona_edu/EUj1xrTaEZ9HmHGZQQ6YF8gB9lu6Q6dNP6B_rHYkEubFgw?e=rshqBb" class="btn btn-secondary" target="_blank">
-                    <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-                    </svg>
-                    View Online
-                </a>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>University of Arizona</p>
-        </div>
-    </div>
-
-    <script>
-        // PDF download functionality
-        document.getElementById('downloadBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Replace 'your-document.pdf' with the actual PDF file path
-            const pdfUrl = 'your-document.pdf';
-            
-            // Create a temporary link element for download
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'document.pdf'; // You can customize the download filename
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Show feedback to user
-            const btn = e.target.closest('.btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<svg class="icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Downloaded!';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-            }, 2000);
-        });
-
-        // Email sharing functionality
-        document.getElementById('shareBtn').addEventListener('click', function() {
-            const subject = encodeURIComponent('Shared Document from University of Arizona');
-            const body = encodeURIComponent('I wanted to share this document with you. You can access it at: ' + window.location.href);
-            
-            window.location.href = `mailto:?subject=${subject}&body=${body}`;
-        });
-
-        // Keyboard navigation support
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                if (e.target.classList.contains('btn')) {
-                    e.preventDefault();
-                    e.target.click();
-                }
-            }
-        });
-    </script>
-    </div>
-    </div>
-    </div>
-<div class="week-content" id="week-wheel" style="display: none;">
-    <title>Pulse Recipe Wheel</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: ;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #ffff;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            color: #3498db;
-            margin-top: 30px;
-        }
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1.2rem;
-        }
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-        .meal-type {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        label {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .wheel-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            margin: 0 auto 40px;
-        }
-        .wheel {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: #fff;
-            transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .wheel-slice {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            transform-origin: bottom right;
-            clip-path: polygon(0 0, 100% 0, 100% 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .wheel-center {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: #fff;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-        .wheel-pointer {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 30px solid #e74c3c;
-            z-index: 11;
-        }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 30px;
-            background-color: #3498db;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .results {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        .result-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        .result-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        .recipe-title {
-            color: #2c3e50;
-            margin-top: 0;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .recipe-origin {
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        .recipe-desc {
-            margin-bottom: 15px;
-        }
-        .recipe-link {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: #2ecc71;
-            color: white;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        .recipe-link:hover {
-            background-color: #27ae60;
-            transform: translateY(-2px);
-        }
-        .meal-badge {
-            background-color: #3498db;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin-left: 10px;
-        }
-        .hidden {
-            display: none;
-        }
-        @media (max-width: 768px) {
-            .wheel-container {
-                width: 300px;
-                height: 300px;
-            }
-            .controls {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        @media screen and (max-width: 768px) {  
-    .container {  
-        margin: 20px 10px;  
-        padding: 20px;  
-    }  
-    .nav a {  
-        margin: 0 10px;  
-        font-size: 16px;  
-    }  
-    .images-row {  
-        flex-wrap: wrap;  
-        gap: 10px;  
-    }  
-    .image-placeholder {  
-        width: calc(50% - 5px);  
-        min-width: 120px;  
-    }  
-    .slides-placeholder {  
-        padding: 20px;  
-        font-size: 18px;  
-    }  
-}  
-@media screen and (max-width: 480px) {  
-    .container {  
-        margin: 10px;  
-        padding: 15px;  
-    }  
-    .nav {  
-        padding: 15px 0;  
-    }  
-    .nav a {  
-        margin: 0 8px;  
-        font-size: 14px;  
-    }  
-    .image-placeholder {  
-        width: 100%;  
-        margin-bottom: 10px;  
-    }  
-}  
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Pulse Recipe Wheel</h1>
-            <p class="subtitle">Spin for delicious pulse recipes from around the world!</p>
-        </header>
-
-        <div class="controls">
-            <div class="meal-type">
-                <label for="breakfast">Breakfast</label>
-                <input type="checkbox" id="breakfast" checked>
-            </div>
-            <div class="meal-type">
-                <label for="lunch">Lunch</label>
-                <input type="checkbox" id="lunch" checked>
-            </div>
-            <div class="meal-type">
-                <label for="dinner">Dinner</label>
-                <input type="checkbox" id="dinner" checked>
-            </div>
-            <div class="meal-type">
-                <label for="snack">Snack</label>
-                <input type="checkbox" id="snack" checked>
-            </div>
-        </div>
-
-        <div class="wheel-container">
-            <div class="wheel" id="wheel"></div>
-            <div class="wheel-center"></div>
-            <div class="wheel-pointer"></div>
-        </div>
-
-        <div class="buttons">
-            <button id="spin-one">Spin for One Recipe</button>
-            <button id="spin-multiple">Spin for Full Day Meal Plan</button>
-        </div>
-
-        <div class="results hidden" id="results">
-            <h2>Your Pulse Recipes</h2>
-            <div id="recipe-results"></div>
-        </div>
-    </div>
-
-    <script>
-        // Recipe database with placeholders for your Google Doc links
-        const recipes = {
-            breakfast: [
-                {
-                    title: "Chickpea Pancakes",
-                    origin: "Indian-inspired",
-                    description: "Fluffy pancakes made with chickpea flour, seasoned with spices.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vTdDBBW9X_UtUAdntA2oR7tZmqO592UytxBbIDq19rEt88BLN0QS5u7llRr2FvjgsYXhgj5DLgkd69Q/pub"
-                },
-                {
-                    title: "Lentil Breakfast Bowl",
-                    origin: "Mediterranean",
-                    description: "Red lentils cooked with sweet potatoes, spinach and topped with a poached egg.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vSMS1upN3FRXCBsXdwfLqOEwqW1TwUopnWVrXDJe1dvuSsYOqga1VO17E-sGPd8Wqf_qJEWGYsHfcLR/pub"
-                },
-                {
-                    title: "Black Bean Breakfast Burrito",
-                    origin: "Mexican",
-                    description: "Savory breakfast burrito filled with black beans, scrambled eggs, and vegetables.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vS6clpgjs09weZhWnq4mzsxj4Kk5Gg_T_GH25RgzvKXrFblKtFgP7pq66BI4ZdXevtt4LqnXJkUrue5/pub"
-                },
-                {
-                    title: "Split Pea Porridge",
-                    origin: "Nordic",
-                    description: "Creamy yellow split pea porridge with cinnamon and maple syrup.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vQyynqZpyzu9hRsykCnVm-QihtD7tZt0G4cCfS6nEagDlsPHuvrrAGI4aLK7_qtgCYSKCaay1x2zHJc/pub"
-                },
-                {
-                    title: "Mung Bean Congee",
-                    origin: "Chinese",
-                    description: "Savory rice porridge with mung beans and ginger.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vQq-GAjUv1F0__7d7g-iJ5IBGpmDv6hqJ_ixjyuVfj8IiMFjUPWNdcubuj3UnOhuMAbYk-0_PKxmr5S/pub"
-                },
-                {
-                    title: "Fava Bean Shakshuka",
-                    origin: "Middle Eastern",
-                    description: "Eggs poached in tomato sauce with fava beans and spices.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vQqiCxaLS95GN-Xpft8rhxCrM2GTpc0a_OOLAvzEAVptOtjq1H9GDOFzlPVPuCq4EDnsEeYCfBP5XFp/pub"
-                }
-            ],
-            lunch: [
-                {
-                    title: "Lentil Soup",
-                    origin: "Turkish",
-                    description: "Hearty red lentil soup with vegetables and warm spices.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vRJwmqJqczsm0UvaYudFqJizwJmJeRz3MwsePpQ_kjId27e1KQwFtLlFODdtvEgEsUYFuDscDeF9wz3/pub"
-                },
-                {
-                    title: "Chickpea Salad",
-                    origin: "Mediterranean",
-                    description: "Fresh salad with chickpeas, cucumbers, tomatoes, and feta cheese.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vThqgMxTSbCinwzmcq8wl01LPNtx6QS70GQvLU313KTfA-mv4JgnPXMePm2Bqxqi_QoJYBy9SMXPkgu/pub"
-                },
-                {
-                    title: "Black Bean Quesadillas",
-                    origin: "Mexican",
-                    description: "Crispy quesadillas filled with black beans, corn, and cheese.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vSmE6dSDNIzMiXURjuXz7FPmUtaxUch39UKPV1rd5Ag45fyvn5twFEtW_ozUTjR7CY_CNOb7wGwo47w/pub"
-                },
-                {
-                    title: "Lentil & Vegetable Wrap",
-                    origin: "Fusion",
-                    description: "Whole grain wraps filled with spiced lentils and fresh vegetables.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vQVnQ3NJWFQkaFDPuHX1wXJEu7nK20vJ8dKOKT8eKEASnGvXlRYi0MnbdukO2IyguXvdovtcuBHVAs6/pub"
-                },
-                {
-                    title: "Split Pea Sandwich Spread",
-                    origin: "European",
-                    description: "Smooth split pea spread with herbs on rustic bread.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vRWDTDweLwBMYeNbeEoLesmQt-Yd5HLZTwLtMy2xFWiRuj-ujVNoYY5frViDjVeY0mis3vXa0P1eOZF/pub"
-                },
-                {
-                    title: "Mung Bean Salad Bowl",
-                    origin: "Asian Fusion",
-                    description: "Sprouted mung beans with fresh vegetables and sesame dressing.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vT1RoOwV5DGcC_WAsGg-p9jZ7p6oYadsLPyHNeWgA3DehLcsgc_5YUaqHJpB0IRR9NhKGoussXOUPlW/pub"
-                }
-            ],
-            dinner: [
-                {
-                    title: "Dal Makhani",
-                    origin: "Indian",
-                    description: "Creamy black lentils cooked with butter and spices.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vThNIP7sqt1vKi1XB6hLFcfdLpyn8pVYiYZ7U9F7v6bFvMaKtKRP72ADNrDVfNmgg61w0gPHmKbxIDq/pub"
-                },
-                {
-                    title: "Chickpea Curry",
-                    origin: "Indian",
-                    description: "Spicy chickpea curry with tomatoes and coconut milk.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vR7-sAsjvQeVZSEEKabfrI9tmeoEiKyni93eSX7cxODEknI5Sa9Y8YLxvZosJV3p5Hx6Km-05We2q_r/pub"
-                },
-                {
-                    title: "Black Bean Burgers",
-                    origin: "American",
-                    description: "Hearty veggie burgers made with black beans and vegetables.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vRy9ZSgHqn7tObru316TwUZwLJAlyFec6WJYdHKb4xDYL_8RD5bninrgq_UtRUcyv2cAThJTwKjkWZD/pub"
-                },
-                {
-                    title: "Lentil Bolognese",
-                    origin: "Italian-inspired",
-                    description: "Savory lentil sauce served over pasta.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vTYjEiA4pBElzNaR5bO3jtqVj76OiZuyv79KN6YUk282e9Ai-H_uG1dSHckGftsSUXI8MSVu2tAKIzt/pub"
-                },
-                {
-                    title: "Split Pea Stew",
-                    origin: "Scandinavian",
-                    description: "Thick and hearty split pea stew with root vegetables.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vS203zzr4szYDB2izBVIwSCJuLcjch4nMC1nhSr7UhQM9yE09grIUF_ka_Tt2gT1VIIWaGLCRHK9V3s/pub"
-                },
-                {
-                    title: "Falafel Plate",
-                    origin: "Middle Eastern",
-                    description: "Crispy chickpea fritters with tahini sauce and pita bread.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vTTmKQLVgnwt_Uh47EeY-pnP5IU40g5TRlEgXbGZTqWffzcd34Yc5_1U4wpigzBxlib0rwuB3lEXa8Y/pub"
-                }
-            ],
-            snack: [
-                {
-                    title: "Roasted Chickpeas",
-                    origin: "Mediterranean",
-                    description: "Crunchy roasted chickpeas seasoned with spices.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vTVPHQqieRfRasqpnjsyl5Zf2S3qNW7iMYBi8dsFChhDQanzKn7qdvlxp4QH8ZXiK_ZutlalKDMJ_-l/pub"
-                },
-                {
-                    title: "Lentil Hummus",
-                    origin: "Fusion",
-                    description: "Smooth dip made with red lentils, tahini, and garlic.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vSjXdjxW30zZIsE--pIoHcCLjxH_Emxd_vK9p9qFwNAb-mhj10VXZJIhVHAxGdPU-pV-MIlpEsj8394/pub"
-                },
-                {
-                    title: "Black Bean Dip",
-                    origin: "Mexican",
-                    description: "Spicy black bean dip with lime and cilantro.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vQN6oifyu8UmbTMnz61q9EIsQl5JKWqWKPfvzcGZXJZ8iFOcncQygJsXM35YUo9VaAXPxgF03QsI-PM/pub"
-                },
-                {
-                    title: "Chickpea Flour Crackers",
-                    origin: "Indian-inspired",
-                    description: "Crispy chickpea flour crackers with herbs and seeds.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vReLRbVbNX9wgkG9ZrfOM4Xbot_gWI0uYuY8GvOFXjfqPLJyl_2rwG64bVKm7Qx4OwGqta4HB9SZ1rB/pub"
-                },
-                {
-                    title: "Lentil Energy Balls",
-                    origin: "Modern/Fusion",
-                    description: "Sweet energy balls made with cooked lentils, dates, and nuts.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vQkAHXYVyAzBxrxy7WVHgWOTcr3d5wS2RorPzLwB7z6Vb1De0JfBp3JsYpHF6opNaKfhAMOSR91MJVW/pub"
-                },
-                {
-                    title: "Edamame Snack Pack",
-                    origin: "Japanese",
-                    description: "Steamed young soybeans with sea salt.",
-                    link: "https://docs.google.com/document/d/e/2PACX-1vSxeha9cNohZstN8022UnAgmAMC6eL5KTj-Rbr5TawNT8KpJalY16WDBJ_YmE0CHJksui4tKY0MoJVl/pub"
-                }
-            ]
-        };
-
-        // Colors for the wheel
-        const colors = [
-            '#e74c3c', '#3498db', '#2ecc71', '#f39c12', 
-            '#9b59b6', '#1abc9c', '#d35400', '#c0392b',
-            '#16a085', '#8e44ad', '#27ae60', '#e67e22'
-        ];
-
-        // Current recipes on the wheel
-        let currentWheelRecipes = [];
-        
-        // Initialize the wheel
-        function initWheel() {
-            const wheel = document.getElementById('wheel');
-            wheel.innerHTML = '';
-            currentWheelRecipes = [];
-            
-            // Get selected meal types
-            const selectedMealTypes = [];
-            if (document.getElementById('breakfast').checked) selectedMealTypes.push('breakfast');
-            if (document.getElementById('lunch').checked) selectedMealTypes.push('lunch');
-            if (document.getElementById('dinner').checked) selectedMealTypes.push('dinner');
-            if (document.getElementById('snack').checked) selectedMealTypes.push('snack');
-            
-            if (selectedMealTypes.length === 0) {
-                alert("Please select at least one meal type!");
-                return false;
-            }
-            
-            // Collect recipes for the selected meal types
-            let allSelectedRecipes = [];
-            selectedMealTypes.forEach(mealType => {
-                recipes[mealType].forEach(recipe => {
-                    allSelectedRecipes.push({...recipe, mealType});
-                });
-            });
-            
-            // Shuffle the recipes
-            allSelectedRecipes = shuffleArray(allSelectedRecipes);
-            
-            // Take up to 12 recipes for the wheel
-            currentWheelRecipes = allSelectedRecipes.slice(0, 12);
-            
-            // Create wheel slices
-            const sliceAngle = 360 / currentWheelRecipes.length;
-            currentWheelRecipes.forEach((recipe, index) => {
-                const slice = document.createElement('div');
-                slice.className = 'wheel-slice';
-                slice.style.transform = `rotate(${index * sliceAngle}deg)`;
-                slice.style.backgroundColor = colors[index % colors.length];
-                
-                // Add a label with recipe name (shortened if needed)
-                const shortName = recipe.title.length > 12 ? recipe.title.substring(0, 10) + '...' : recipe.title;
-                const label = document.createElement('div');
-                label.style.transform = `rotate(${sliceAngle / 2}deg) translateX(100px) rotate(-90deg)`;
-                label.textContent = shortName;
-                label.style.width = '120px';
-                label.style.textAlign = 'center';
-                label.style.fontSize = '12px';
-                
-                slice.appendChild(label);
-                wheel.appendChild(slice);
-            });
-            
-            return true;
-        }
-        
-        // Shuffle array function
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-        
-        // Function to spin the wheel
-        function spinWheel() {
-            if (!initWheel()) return Promise.reject("No meal types selected");
-            
-            const wheel = document.getElementById('wheel');
-            const spinDegrees = 3600 + Math.floor(Math.random() * 360); // Spin multiple times plus random position
-            
-            wheel.style.transform = `rotate(${spinDegrees}deg)`;
-            
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    // Calculate which recipe was selected
-                    const normalizedDegrees = spinDegrees % 360;
-                    const sliceAngle = 360 / currentWheelRecipes.length;
-                    const selectedIndex = currentWheelRecipes.length - 1 - Math.floor(normalizedDegrees / sliceAngle);
-                    const wrappedIndex = selectedIndex % currentWheelRecipes.length;
-                    resolve(currentWheelRecipes[wrappedIndex]);
-                }, 3000); // Wait for animation to complete
-            });
-        }
-        
-        // Display recipe result
-        function displayRecipe(recipe) {
-            const resultsDiv = document.getElementById('results');
-            const recipeResultsDiv = document.getElementById('recipe-results');
-            
-            // Create recipe card
-            const recipeCard = document.createElement('div');
-            recipeCard.className = 'result-card';
-            
-            // Set the meal type badge color
-            let badgeColor;
-            switch(recipe.mealType) {
-                case 'breakfast': badgeColor = '#e74c3c'; break;
-                case 'lunch': badgeColor = '#3498db'; break;
-                case 'dinner': badgeColor = '#2ecc71'; break;
-                case 'snack': badgeColor = '#f39c12'; break;
-                default: badgeColor = '#95a5a6';
-            }
-            
-            recipeCard.innerHTML = `
-                <h3 class="recipe-title">
-                    ${recipe.title}
-                    <span class="meal-badge" style="background-color: ${badgeColor}">
-                        ${recipe.mealType.charAt(0).toUpperCase() + recipe.mealType.slice(1)}
-                    </span>
-                </h3>
-                <div class="recipe-origin">${recipe.origin}</div>
-                <div class="recipe-desc">${recipe.description}</div>
-                <a href="${recipe.link}" target="_blank" class="recipe-link">View Recipe</a>
-            `;
-            
-            recipeResultsDiv.appendChild(recipeCard);
-            resultsDiv.classList.remove('hidden');
-        }
-        
-        // Spin for one recipe
-        document.getElementById('spin-one').addEventListener('click', async () => {
-            try {
-                const recipe = await spinWheel();
-                
-                // Clear previous results
-                document.getElementById('recipe-results').innerHTML = '';
-                
-                // Display the selected recipe
-                displayRecipe(recipe);
-                
-                // Scroll to results
-                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-            } catch (error) {
-                console.error(error);
-            }
-        });
-        
-        // Spin for multiple recipes (meal plan)
-        document.getElementById('spin-multiple').addEventListener('click', async () => {
-            // Get selected meal types
-            const selectedMealTypes = [];
-            if (document.getElementById('breakfast').checked) selectedMealTypes.push('breakfast');
-            if (document.getElementById('lunch').checked) selectedMealTypes.push('lunch');
-            if (document.getElementById('dinner').checked) selectedMealTypes.push('dinner');
-            if (document.getElementById('snack').checked) selectedMealTypes.push('snack');
-            
-            if (selectedMealTypes.length === 0) {
-                alert("Please select at least one meal type!");
-                return;
-            }
-            
-            // Clear previous results
-            document.getElementById('recipe-results').innerHTML = '';
-            
-            // For each meal type, spin the wheel
-            for (const mealType of selectedMealTypes) {
-                // Temporarily set only this meal type as selected
-                document.getElementById('breakfast').checked = mealType === 'breakfast';
-                document.getElementById('lunch').checked = mealType === 'lunch';
-                document.getElementById('dinner').checked = mealType === 'dinner';
-                document.getElementById('snack').checked = mealType === 'snack';
-                
-                // Spin the wheel
-                try {
-                    const recipe = await spinWheel();
-                    displayRecipe(recipe);
-                    // Short pause between spins
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-            
-            // Reset meal type checkboxes to original state
-            document.getElementById('breakfast').checked = selectedMealTypes.includes('breakfast');
-            document.getElementById('lunch').checked = selectedMealTypes.includes('lunch');
-            document.getElementById('dinner').checked = selectedMealTypes.includes('dinner');
-            document.getElementById('snack').checked = selectedMealTypes.includes('snack');
-            
-            // Re-initialize wheel with all selected meal types
-            initWheel();
-            
-            // Scroll to results
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Initialize the wheel on page load
-        window.addEventListener('load', initWheel);
-    </script>
 
     <!-- JavaScript for Navigation -->  
    <script>  
@@ -5850,30 +3094,21 @@ Geovana has published scientific research on the effects of intradialytic exerci
     const links = document.querySelectorAll('.nav-link');  
     const weekContents = document.querySelectorAll('.week-content');  
 
-   function showWeek(weekNum) {  
-    // Hide all week-content sections  
-    document.querySelectorAll('.week-content').forEach(function(div) {  
-        div.style.display = 'none';  
-    });  
-  
-    // Remove 'active' class from all nav links  
-    document.querySelectorAll('.nav-link').forEach(function(link) {  
-        link.classList.remove('active');  
-    });  
-  
-    // Show the selected section  
-    var targetId = 'week-' + weekNum;  
-    var targetDiv = document.getElementById(targetId);  
-    if (targetDiv) {  
-        targetDiv.style.display = 'block';  
+    // Function to show the selected week and update navigation  
+    function showWeek(weekNum) {  
+        weekContents.forEach(function(div) {  
+            div.style.display = 'none';  
+        });  
+        // Handle both numeric weeks and the "about" section  
+        const targetId = isNaN(weekNum) ? 'week-' + weekNum : 'week-' + weekNum;  
+        document.getElementById(targetId).style.display = 'block';  
+        links.forEach(function(link) {  
+            link.classList.remove('active');  
+            if (link.getAttribute('data-week') == weekNum) {  
+                link.classList.add('active');  
+            }  
+        });  
     }  
-  
-    // Highlight the active nav link  
-    var activeLink = document.querySelector('.nav-link[data-week=\"' + weekNum + '\"]');  
-    if (activeLink) {  
-        activeLink.classList.add('active');  
-    }  
-}  
 
     // Add click event listeners to navigation links  
     links.forEach(function(link) {  
