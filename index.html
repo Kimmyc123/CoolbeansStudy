@@ -676,7 +676,21 @@
         .sidebar a:hover {
             background: #d4b49e;
         }
-        
+        /* Hide the white nav bar off the top by default */
+#topMenuBar, .top-menu, .nav-bar {
+  position: fixed;
+  top: -80px;          /* move it above the viewport */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: top 0.3s ease;
+}
+/* When we add a class like .visible, it slides down */
+#topMenuBar.visible,
+.top-menu.visible,
+.nav-bar.visible {
+  top: 0;
+}
         /* Removed media query that was hiding the hamburger menu */
         </style>  
 
@@ -711,6 +725,7 @@
         <a href="#" class="nav-link" data-week="faq">FAQ</a>
     </div>
 </div> 
+
 
     </div>  
 
