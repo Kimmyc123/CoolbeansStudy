@@ -541,6 +541,92 @@
         margin-bottom: 10px;  
     }  
 }  
+/* =============================
+   TOP NAV: hide by default, open on hover (desktop),
+   genie open/close button (mobile)
+   ============================= */
+
+html, body { margin: 0; padding: 0; }
+
+/* Invisible top edge hover zone for desktop */
+#navTopTrigger{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  z-index: 9000;
+}
+
+/* Mobile toggle button (hamburger) */
+.nav-toggle{
+  position: fixed;
+  top: 10px;
+  right: 12px;
+  z-index: 9100;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.70);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  font-size: 22px;
+  line-height: 44px;
+  cursor: pointer;
+  display: none; /* only show on mobile */
+}
+
+/* IMPORTANT: make your existing .nav stop occupying layout space */
+#primaryNav.nav{
+  position: fixed;        /* key: removes the permanent white bar */
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 !important;   /* overrides margin-bottom */
+  z-index: 8000;
+  will-change: transform, clip-path, opacity;
+}
+
+/* Desktop: hidden unless opened */
+@media (hover: hover) and (pointer: fine){
+  #primaryNav.nav{
+    transform: translateY(-115%);
+    opacity: 0.98;
+    transition: transform 220ms ease;
+  }
+  #primaryNav.nav.is-open{
+    transform: translateY(0);
+  }
+}
+
+/* Mobile: genie unfold on toggle */
+@media (hover: none) and (pointer: coarse){
+  .nav-toggle{ display: block; }
+
+  #primaryNav.nav{
+    transform-origin: top;
+    transform: translateY(0) scaleY(0.08);
+    opacity: 0;
+    clip-path: inset(0 0 88% 0 round 16px);
+    transition: transform 420ms cubic-bezier(.2,.9,.2,1),
+                opacity 200ms ease,
+                clip-path 520ms cubic-bezier(.2,.9,.2,1);
+    pointer-events: none;
+  }
+
+  #primaryNav.nav.is-open{
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+    clip-path: inset(0 0 0 0 round 0px);
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #primaryNav.nav{ transition: none; clip-path: none; transform: translateY(-110%); opacity: 1; }
+    #primaryNav.nav.is-open{ transform: translateY(0); }
+  }
+}
         </style>  
 </head>  
 <body>  
@@ -554,6 +640,9 @@
     </span>  
 </div>  
 </div>  
+<div id="navTopTrigger" aria-hidden="true"></div>
+<button id="navToggleBtn" class="nav-toggle" aria-controls="primaryNav" aria-expanded="false" type="button">☰</button>
+
     <style>  
     .nav {  
         background: white;  
@@ -564,7 +653,7 @@
     }  
 
     .nav-container {  
-        max-width: 1200px;  
+        max-width: 800px;  
         margin: 0 auto;  
         display: flex;  
         justify-content: center;  
@@ -694,7 +783,7 @@
         /* Removed media query that was hiding the hamburger menu */
         </style>  
 
-<div class="nav">  
+<div class="nav" id="primaryNav">  
     <div class="nav-container">  
         <a href="#" class="nav-link" data-week="about">About</a> 
         <a href="#" class="nav-link" data-week="1">Week 1: Yellow Lentils</a>  
@@ -6088,5 +6177,64 @@ Kimmy also contributes to IRB-approved research related to general health, chron
         });
     });
     </script>
+    <script>
+(function(){
+  const navEl = document.getElementById('primaryNav');
+  const triggerEl = document.getElementById('navTopTrigger');
+  const btnEl = document.getElementById('navToggleBtn');
+  if (!navEl) return;
+
+  function isDesktopHover(){
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  }
+  function isMobile(){
+    return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  }
+
+  let closeTimer = null;
+
+  function openNav(){
+    if (!isDesktopHover()) return;
+    if (closeTimer) window.clearTimeout(closeTimer);
+    navEl.classList.add('is-open');
+  }
+
+  function scheduleClose(){
+    if (!isDesktopHover()) return;
+    if (closeTimer) window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(function(){
+      navEl.classList.remove('is-open');
+    }, 120);
+  }
+
+  if (triggerEl){
+    triggerEl.addEventListener('mouseenter', openNav);
+    triggerEl.addEventListener('mouseleave', scheduleClose);
+  }
+  navEl.addEventListener('mouseenter', openNav);
+  navEl.addEventListener('mouseleave', scheduleClose);
+
+  if (btnEl){
+    function setExpanded(val){
+      btnEl.setAttribute('aria-expanded', val ? 'true' : 'false');
+    }
+
+    btnEl.addEventListener('click', function(){
+      const nowOpen = !navEl.classList.contains('is-open');
+      navEl.classList.toggle('is-open', nowOpen);
+      setExpanded(nowOpen);
+    });
+
+    navEl.addEventListener('click', function(evt){
+      if (!isMobile()) return;
+      const t = evt.target;
+      if (t && t.tagName && t.tagName.toLowerCase() === 'a'){
+        navEl.classList.remove('is-open');
+        setExpanded(false);
+      }
+    });
+  }
+})();
+</script>
     </body>  
 </html>
