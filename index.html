@@ -801,7 +801,6 @@ html, body { margin: 0; padding: 0; }
         <span></span>
         <span></span>
     </div>
-    
     <!-- Dropdown Menu -->
     <div class="dropdown-menu">
         <a href="#" class="nav-link" data-week="7">Week 7: Black-Eyed Peas</a>
@@ -1504,126 +1503,140 @@ html, body { margin: 0; padding: 0; }
     </div>
     
 <script>
-    function showTab(participantNumber, tabName) {
-        const recipeSection = document.getElementById("recipe-" + participantNumber);
-        const nutritionSection = document.getElementById("nutrition-" + participantNumber);
+    let currentSlide = 0;
+    const totalSlides = 3;
 
-        recipeSection.classList.remove("active");
-        nutritionSection.classList.remove("active");
+    function updateCarousel() {
+        const wrapper = document.getElementById('carouselWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-        if (tabName === "recipe") {
+        if (!wrapper) {
+            return;
+        }
+
+        wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        if (prevBtn) {
+            prevBtn.disabled = currentSlide === 0;
+        }
+
+        if (nextBtn) {
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+    }
+
+    function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateCarousel();
+    }
+
+    function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            updateCarousel();
+        }
+    }
+
+    function previousSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateCarousel();
+        }
+    }
+
+    function showContent(participantIndex, contentType) {
+        const imageSection = document.getElementById("image-" + participantIndex);
+        const recipeSection = document.getElementById("recipe-" + participantIndex);
+        const nutritionSection = document.getElementById("nutrition-" + participantIndex);
+
+        if (imageSection) {
+            imageSection.style.display = "none";
+            imageSection.classList.remove("active");
+        }
+
+        if (recipeSection) {
+            recipeSection.style.display = "none";
+            recipeSection.classList.remove("active");
+        }
+
+        if (nutritionSection) {
+            nutritionSection.style.display = "none";
+            nutritionSection.classList.remove("active");
+        }
+
+        if (contentType === "image" && imageSection) {
+            imageSection.style.display = "flex";
+            imageSection.classList.add("active");
+        }
+
+        if (contentType === "recipe" && recipeSection) {
+            recipeSection.style.display = "block";
             recipeSection.classList.add("active");
         }
 
-        if (tabName === "nutrition") {
+        if (contentType === "nutrition" && nutritionSection) {
+            nutritionSection.style.display = "block";
             nutritionSection.classList.add("active");
         }
+
+        const clickedButton = window.event ? window.event.currentTarget : null;
+
+        if (clickedButton) {
+            const participantCard = clickedButton.closest(".participant-card");
+
+            if (participantCard) {
+                const navButtons = participantCard.querySelectorAll(".content-nav-btn, .tab-btn, .tab-buttons button");
+
+                navButtons.forEach(function(button) {
+                    button.classList.remove("active");
+                });
+
+                clickedButton.classList.add("active");
+            }
+        }
     }
-</script>
-    <script>
-        let currentSlide = 0;
-        const totalSlides = 3;
 
-        function updateCarousel() {
-            const wrapper = document.getElementById('carouselWrapper');
-            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update indicators
-            const indicators = document.querySelectorAll('.indicator');
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-            
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+    function showTab(participantNumber, tabName) {
+        showContent(participantNumber, tabName);
+    }
+
+    updateCarousel();
+
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "ArrowLeft") {
+            previousSlide();
         }
 
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
+        if (e.key === "ArrowRight") {
+            nextSlide();
         }
+    });
 
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateCarousel();
-            }
-        }
+    let startX = 0;
+    let endX = 0;
 
-        function previousSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-            }
-        }
+    document.addEventListener("touchstart", function(e) {
+        startX = e.touches[0].clientX;
+    });
 
-        function showContent(participantIndex, contentType) {
-            // Hide all content for this participant
-            document.getElementById(`image-${participantIndex}`).style.display = 'none';
-            document.getElementById(`recipe-${participantIndex}`).classList.remove('active');
-            document.getElementById(`nutrition-${participantIndex}`).classList.remove('active');
-            
-            // Show selected content
-            if (contentType === 'image') {
-                document.getElementById(`image-${participantIndex}`).style.display = 'flex';
-            } else if (contentType === 'recipe') {
-                document.getElementById(`recipe-${participantIndex}`).classList.add('active');
-            } else if (contentType === 'nutrition') {
-                document.getElementById(`nutrition-${participantIndex}`).classList.add('active');
-            }
-            
-            // Update navigation buttons for this participant
-            const participantCards = document.querySelectorAll('.participant-card');
-            const navButtons = participantCards[participantIndex].querySelectorAll('.content-nav-btn');
-            navButtons.forEach((btn, index) => {
-                btn.classList.remove('active');
-                if ((index === 0 && contentType === 'image') ||
-                    (index === 1 && contentType === 'recipe') ||
-                    (index === 2 && contentType === 'nutrition')) {
-                    btn.classList.add('active');
-                }
-            });
-        }
+    document.addEventListener("touchend", function(e) {
+        endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
 
-        // Initialize carousel
-        updateCarousel();
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') {
-                previousSlide();
-            } else if (e.key === 'ArrowRight') {
+        if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
                 nextSlide();
+            } else {
+                previousSlide();
             }
-        });
-
-        // Add touch/swipe support for mobile
-        let startX = 0;
-        let endX = 0;
-
-        document.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-        });
-
-        document.addEventListener('touchend', function(e) {
-            endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > 50) { // Minimum swipe distance
-                if (diffX > 0) {
-                    nextSlide();
-                } else {
-                    previousSlide();
-                }
-            }
-        });
-    </script>
+        }
+    });
+</script>
+</div>
 </body>     
     </div>
-    </div>
-    </div>
-    </div>
+  
     <div class="week-content" id="week-1" style="display: none;">  
         <div class="container">  
 
@@ -1705,7 +1718,7 @@ html, body { margin: 0; padding: 0; }
 <h1 class="week-title">Week 1: Yellow Lentils</h1>  
     <!-- Embedded PowerPoint presentation -->  
     <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ1-QihoojO47FYjrYsyfIyszCYCGmZiZHL6kR4hxZzvkMcDz2oA7HBfUJOB2j9Qw/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSF8Y4zwA3-XnLo-A1ARC-sWwSLNP3cTuUyovWwwvogtePxsvoKuiwLRKYSTt7Vb8VwDCC-xUJplSIK/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
     </div>  
     <style>  
     .images-row {  
@@ -1875,7 +1888,7 @@ html, body { margin: 0; padding: 0; }
 <h1 class="week-title">Week 2: Black Beans</h1>  
             <!-- Embedded PowerPoint presentation -->  
     <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTGvi5JNiy04FzUjnJTnvyWOXuiBbl0WVpls9AX556j84xf5q6saZtZwMMPO_a0wQ/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQR-M-_XrBfF2HXFrg55U1t6_6FCpPhhedUcjbODVtD_aAkcn4ZMpzcs35HmMTO1ZJbMTl2KQ9uMlDq/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>  
     <style>  
     .images-row {  
@@ -2042,7 +2055,7 @@ html, body { margin: 0; padding: 0; }
 <h1 class="week-title">Week 3: White Beans</h1>  
              <!-- Embedded PowerPoint presentation -->  
     <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTTm1EmboIiQ6rXAJBDHcWRLIhNe-5qkM3xc_o6VOFQDN8Fu4sZMLfmabvMVifReQ/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTseYF8ZtgaKswZ6XBcIzqkUDVhr3kmrafcHUH2nRG2ziYGJxmQMaSlES3u1gXKTALu-XqJZbqlFsxN/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>  
     <style>  
     .images-row {  
@@ -2208,7 +2221,7 @@ html, body { margin: 0; padding: 0; }
 <h1 class="week-title">Week 4: Chickpeas</h1>   
             <!-- Embedded PowerPoint presentation -->  
     <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQrYQDjJCwn7M4OlfE4DnBZhuldeZ6-Sc-EnUZf9vlMD91zqy5UzjF0wdTyIn92ig/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTE2JUMERDE41f9aBLaH-5Muk_vmY4M1TXcooIeNyFQ8ndpb02iw2bvHsaoAMuqjdI2fB-vlYPJmPMV/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>  
     <style>  
     .images-row {  
@@ -2372,7 +2385,7 @@ html, body { margin: 0; padding: 0; }
            <h1 class="week-title">Week 5: Red Lentils</h1>  
              <!-- Embedded PowerPoint presentation -->  
     <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRPP6FMckP_fAP_zbeL8fCf__c3n0-5gMk90QuUG2rBigaXIakp0zrxdNcDWi0pYg/pubembed?start=false&loop=true&delayms=3000" frameborder="0" width="480" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRPP6FMckP_fAP_zbeL8fCf__c3n0-5gMk90QuUG2rBigaXIakp0zrxdNcDWi0pYg/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>  
     <style>  
     .images-row {  
@@ -2539,7 +2552,7 @@ html, body { margin: 0; padding: 0; }
 <div id="about-researchers" style="max-width: 900px; margin: 0 auto; background: #f5f5f5; border-radius: 16px; padding: 40px;">  
   <h1 class="week-title">Week 6: Kidney Beans</h1>  
   <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRwgrPy4-TSHNcKmC8t3RIjih2hf0KVGEPRjVEzg4agKQWIOnGxpWAEVRXJD7mz2w/pubembed?start=false&loop=true&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true"></iframe>  
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTzE2Z2tQ_BNhiAOhdcsXxt8FN9FnwJuFNjn0Ck2xCQFX73bUCFuQuvGk6dxh5Rf5S1dXQcva7DkEaz/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>  
   </div>  
   
   <style>  
@@ -2808,7 +2821,7 @@ html, body { margin: 0; padding: 0; }
 </div>  
  <!-- Embedded PowerPoint presentation -->  
     <div class="slides-placeholder" style="padding:0; border:none; background:none;">  
-   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTewK6IdwPCuP0B613ES-WXYTsB0RW9lmISSqgLi-S5GRMquAzHk1dIqNoj7XCPVWi7xFBQO46Gmz2k/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT-FRKtnyGToe_4574zm1bJGY3jdUQPVIkS_IUUGnuMfVetoH0dXOpn5Y8A40GJiXZDseXmSwd7kYJ2/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>  
       <div class="image-gallery">
             <div class="image-holder">
@@ -4604,7 +4617,7 @@ Geovana has published scientific research on the effects of intradialytic exerci
                 <div style="flex: 1 1 250px; min-width: 220px; max-width: 300px; background: #f5e6da; border-radius: 10px; padding: 20px; text-align: center;">  
                     <h3 style="color: #CC0033; margin: 10px 0 6px 0;">Kimberly "Kimmy" Ceus</h3>  
                     <p style="font-weight: bold; color: #7c5c3e; margin: 0 0 10px 0;">Researcher & Coordinator</p>  
-                    <img src="https://media.licdn.com/dms/image/v2/D5603AQEMjV1t6uGgvw/profile-displayphoto-crop_800_800/B56Z1_4j58GsAM-/0/1775967028557?e=1778716800&v=beta&t=6aAxQDWAfGK0UTzxxyOsYs7IBHpltqaCsnDMEkAp9Bg" alt="Nutritional Intervention 2" style="width: 150px; height: 150px; object-fit: cover; border: 8px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">  
+                    <img src="https://i.imgur.com/0kbJtEu.jpeg" alt="Nutritional Intervention 2" style="width: 150px; height: 150px; object-fit: cover; border: 8px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">  
                     <p style="font-size: 1rem; color: #7c5c3e;">Kimberly “Kimmy” Ceus is a PhD student in Nutritional Sciences and Wellness at the University of Arizona. Her work focuses on plant-based nutrition, functional foods, and lifestyle-related factors that support health and quality of life, with a strong emphasis on community-centered and equity-driven research.
 
 She leads coordination for the Pulses Study, a community-based nutrition research project, where she manages participant recruitment, screening, scheduling, and ongoing communication. As the primary point of contact for participants, Kimmy oversees day-to-day study operations and supports interdisciplinary research teams to ensure smooth, ethical study execution.
