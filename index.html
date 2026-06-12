@@ -796,7 +796,151 @@ html, body { margin: 0; padding: 0; }
   top: 0;
 }
         /* Removed media query that was hiding the hamburger menu */
+         .cookbook-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 40px;
+    z-index: 100000;
+    width: 58px;
+    height: 50px;
+  }
+
+  .cookbook-book {
+    position: relative;
+    display: block;
+    width: 58px;
+    height: 74px;
+    border-radius: 6px 10px 10px 6px;
+    background: linear-gradient(135deg, #b5642a 0%, #8f4718 100%);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+  }
+
+  .cookbook-book:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+  }
+
+  .cookbook-book::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 100%;
+    background: linear-gradient(180deg, #6f3210 0%, #5a2509 100%);
+    border-radius: 6px 0 0 6px;
+  }
+
+  .cookbook-book::after {
+    content: "";
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    width: 6px;
+    height: calc(100% - 16px);
+    background: linear-gradient(180deg, #fffdf8 0%, #f2eadf 100%);
+    border-radius: 0 4px 4px 0;
+    opacity: 0.95;
+  }
+
+  .cookbook-book-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #d68d27ff;
+    pointer-events: none;
+  }
+
+  .cookbook-close {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #6b3a18;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    display: none;
+    padding: 0;
+  }
+
+  .cookbook-widget:hover .cookbook-close {
+    display: block;
+  }
+
+  .cookbook-close:hover {
+    background: #f5e7dc;
+  }
+
+  @media (max-width: 768px) {
+    .cookbook-widget {
+      top: 14px;
+      right: 14px;
+      width: 50px;
+      height: 64px;
+    }
+
+    .cookbook-book {
+      width: 50px;
+      height: 64px;
+    }
+
+    .cookbook-book-icon {
+      font-size: 18px;
+    }
+
+    .cookbook-close {
+      display: block;
+      width: 20px;
+      height: 20px;
+      font-size: 13px;
+    }
+  }
         </style>  
+
+<div id="cookbookWidget" class="cookbook-widget">
+  <a
+    href="https://drive.google.com/file/d/128meVN2quEZa7tScCNFMBzVcau19CrgD/view?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="cookbook-book"
+    aria-label="Open Cookbook"
+    title="Open Cookbook"
+  >
+    <span class="cookbook-book-icon">📖</span>
+  </a>
+
+  <button
+    class="cookbook-close"
+    type="button"
+    aria-label="Close cookbook button"
+    title="Close"
+    onclick="closeCookbookWidget()"
+  >
+    ×
+  </button>
+</div>
+
+<script>
+  function closeCookbookWidget() {
+    const widget = document.getElementById("cookbookWidget");
+    if (widget) {
+      widget.style.display = "none";
+    }
+  }
+</script>
 
 <div class="nav" id="primaryNav">  
     <div class="nav-container">  
